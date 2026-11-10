@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="noir">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#101311" />
+  <link rel="manifest" href="manifest.json" />
+  <title>Sahand I CanDo — NOIR Personal OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Vazirmatn:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <a class="brand" href="#">
+        <span class="brand-mark">S</span>
+        <div>
+          <strong>I CANDO</strong>
+          <small>NOIR PERSONAL OS</small>
+        </div>
+      </a>
+      <div class="eyebrow" data-i18n="workspace">SYSTEM</div>
+      <nav class="nav-list">
+        <button class="nav-item active" data-page="today">◷ <span data-i18n="navToday">Today</span></button>
+        <button class="nav-item" data-page="vision">◎ <span data-i18n="navVision">Vision</span></button>
+        <button class="nav-item" data-page="focus">◉ <span data-i18n="navFocus">Focus</span></button>
+        <button class="nav-item" data-page="stats">▥ <span data-i18n="navStats">Statistics</span></button>
+        <button class="nav-item" data-page="more">⌘ <span data-i18n="navMore">More</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <strong data-i18n="motto">One day at a time.</strong>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <div class="eyebrow" id="date-display">DAILY COMMAND CENTER</div>
+          <h1 id="page-title">Today's Command Center</h1>
+        </div>
+        <div class="top-actions">
+          <span class="badge badge-accent" id="streak-badge">🔥 5 Day Streak</span>
+        </div>
+      </header>
+
+      <!-- 1. TODAY -->
+      <section class="page active" id="page-today">
+        <div class="grid-2">
+          <article class="card">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span class="badge badge-accent" data-i18n="mainMission">Main Mission</span>
+              <button class="btn btn-outline" id="edit-mission-btn" style="padding:4px 10px; font-size:10px;">Edit</button>
+            </div>
+            <h2 id="mission-title" style="margin:14px 0 6px; font-size:20px;">Complete core architecture & test APK</h2>
+            <p style="font-size:12px; color:var(--muted);" data-i18n="missionHint">The one result that makes today valuable.</p>
+            <div class="progress-track"><div class="progress-fill" id="mission-bar" style="width: 50%;"></div></div>
+            <div style="display:flex; gap:10px; margin-top:16px;">
+              <button class="btn btn-primary" data-goto="focus" data-i18n="startFocusBtn">Start Focus Session →</button>
+              <button class="btn btn-outline" id="mission-step-btn">+25%</button>
+            </div>
+          </article>
+
+          <article class="card" style="display:flex; flex-direction:column; justify-content:center;">
+            <span class="eyebrow" data-i18n="dailyOverview">DAILY OVERVIEW</span>
+            <div style="font-size:36px; font-weight:800; margin:8px 0;" id="completion-rate">0%</div>
+            <p style="font-size:12px; color:var(--muted);" id="tasks-summary-text">0 of 0 tasks completed</p>
+            <div class="progress-track"><div class="progress-fill" id="daily-bar" style="width:0%"></div></div>
+            <div style="margin-top:12px; font-size:12px; display:flex; justify-content:space-between;">
+              <span style="color:var(--muted);" data-i18n="focusedToday">Focused Today:</span>
+              <strong id="today-focus-mins">0 mins</strong>
+            </div>
+          </article>
+        </div>
+
+        <div class="grid-2">
+          <!-- Tasks -->
+          <article class="card">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <h3 data-i18n="dailyTasks">Daily Tasks</h3>
+              <span class="badge" id="recovery-indicator" style="display:none;">Recovery Mode Active</span>
+            </div>
+            <form class="inline-form" id="add-task-form">
+              <input type="text" id="new-task-input" class="input-field" placeholder="Add a realistic task..." required />
+              <select id="new-task-priority" class="input-field" style="max-width:110px;">
+                <option value="Main">Main</option>
+                <option value="Secondary">Secondary</option>
+                <option value="Optional">Optional</option>
+              </select>
+              <button type="submit" class="btn btn-primary">+</button>
+            </form>
+            <div id="tasks-container"></div>
+          </article>
+
+          <!-- Daily Schedule -->
+          <article class="card">
+            <h3 data-i18n="dailySchedule" style="margin-bottom:12px;">Daily Schedule</h3>
+            <div class="task-row"><strong style="width:55px; font-size:12px; color:var(--accent);">07:00</strong><span style="font-size:13px;">Wake up & Morning Routine</span></div>
+            <div class="task-row"><strong style="width:55px; font-size:12px; color:var(--accent);">09:00</strong><span style="font-size:13px;">Deep Work (Main Mission)</span></div>
+            <div class="task-row"><strong style="width:55px; font-size:12px; color:var(--accent);">12:00</strong><span style="font-size:13px;">Creative Work / Music Practice</span></div>
+            <div class="task-row"><strong style="width:55px; font-size:12px; color:var(--accent);">15:00</strong><span style="font-size:13px;">Exercise & Personal Growth</span></div>
+            <div class="task-row"><strong style="width:55px; font-size:12px; color:var(--accent);">18:00</strong><span style="font-size:13px;">Evening Review & Next Day Plan</span></div>
+            <div class="task-row"><strong style="width:55px; font-size:12px; color:var(--accent);">22:30</strong><span style="font-size:13px;">Digital Shutdown & Sleep Prep</span></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 2. VISION -->
+      <section class="page" id="page-vision">
+        <article class="card">
+          <h3 data-i18n="addGoalTitle">Connect Long-Term Vision to Milestones</h3>
+          <form class="inline-form" id="add-goal-form">
+            <input type="text" id="goal-title-input" class="input-field" placeholder="Goal (e.g. Release Original Music EP)" required />
+            <select id="goal-horizon-input" class="input-field" style="max-width:130px;">
+              <option value="Yearly">Yearly</option>
+              <option value="6-Month">6-Month</option>
+              <option value="Quarterly">Quarterly</option>
+              <option value="Monthly">Monthly</option>
+              <option value="Weekly">Weekly</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Add Goal</button>
+          </form>
+        </article>
+        <div class="grid-3" id="goals-container"></div>
+      </section>
+
+      <!-- 3. FOCUS -->
+      <section class="page" id="page-focus">
+        <div class="grid-2">
+          <article class="card" style="text-align:center;">
+            <span class="badge badge-accent">DEEP WORK ENGINE</span>
+            <div style="display:flex; justify-content:center; gap:6px; margin-top:14px;">
+              <button class="btn btn-outline dur-btn" data-mins="25">25m</button>
+              <button class="btn btn-outline dur-btn" data-mins="45">45m</button>
+              <button class="btn btn-outline dur-btn" data-mins="60">60m</button>
+              <button class="btn btn-outline dur-btn" data-mins="90">90m</button>
+            </div>
+            <div class="timer-ring">
+              <div class="timer-inner">
+                <strong id="timer-display">45:00</strong>
+                <small style="color:var(--muted); font-size:11px;">STAY FOCUSED</small>
+              </div>
+            </div>
+            <div style="display:flex; justify-content:center; gap:10px;">
+              <button class="btn btn-primary" id="timer-toggle">Start Focus</button>
+              <button class="btn btn-outline" id="timer-complete">Log Completed Session</button>
+              <button class="btn btn-outline" id="timer-reset">Reset</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Recent Focus Sessions</h3>
+            <p style="font-size:12px; color:var(--muted); margin-bottom:12px;">Sustained attention records</p>
+            <div id="focus-history-container"></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 4. STATISTICS -->
+      <section class="page" id="page-stats">
+        <div class="grid-3">
+          <article class="card">
+            <span class="eyebrow">TOTAL FOCUS TIME</span>
+            <div style="font-size:28px; font-weight:800; margin:8px 0;" id="stat-total-focus">0 mins</div>
+            <small style="color:var(--accent);">Meaningful deep work</small>
+          </article>
+          <article class="card">
+            <span class="eyebrow">COMPLETED SESSIONS</span>
+            <div style="font-size:28px; font-weight:800; margin:8px 0;" id="stat-sessions-count">0</div>
+            <small style="color:var(--muted);">Recorded blocks</small>
+          </article>
+          <article class="card">
+            <span class="eyebrow">LAST SLEEP QUALITY</span>
+            <div style="font-size:28px; font-weight:800; margin:8px 0;" id="stat-sleep-last">8.2 / 10</div>
+            <small style="color:var(--accent);">7.5 hrs recorded</small>
+          </article>
+        </div>
+
+        <article class="card">
+          <h3>Log Sleep & Energy</h3>
+          <form class="inline-form" id="sleep-form">
+            <input type="text" id="sleep-hours" class="input-field" placeholder="Sleep duration (e.g. 7h 45m)" required />
+            <input type="number" id="sleep-score" class="input-field" placeholder="Quality (1-10)" min="1" max="10" step="0.1" required />
+            <button type="submit" class="btn btn-primary">Save Sleep Log</button>
+          </form>
+        </article>
+      </section>
+
+      <!-- 5. MORE -->
+      <section class="page" id="page-more">
+        <div class="grid-2">
+          <article class="card">
+            <h3>Appearance & Language</h3>
+            <div class="task-row" style="justify-content:space-between;">
+              <span>Language</span>
+              <select id="lang-select" class="input-field" style="max-width:140px;">
+                <option value="en">English</option>
+                <option value="fa">Persian</option>
+              </select>
+            </div>
+            <div class="task-row" style="justify-content:space-between;">
+              <span>Visual Theme</span>
+              <select id="theme-select" class="input-field" style="max-width:140px;">
+                <option value="noir">Noir</option>
+                <option value="dusk">Dusk</option>
+                <option value="daylight">Daylight</option>
+              </select>
+            </div>
+            <div class="task-row" style="justify-content:space-between;">
+              <div>
+                <strong>Recovery Day Mode</strong>
+                <div style="font-size:11px; color:var(--muted);">Never let one bad day become a bad week.</div>
+              </div>
+              <button class="btn btn-outline" id="recovery-toggle-btn">Toggle</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Data Backup & Go Server Sync</h3>
+            <p style="font-size:12px; color:var(--muted); margin-bottom:14px;">Your data stays local on your phone. Export anytime or sync with your Go server.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:10px;">
+              <button class="btn btn-primary" id="export-data-btn">Export JSON Backup</button>
+              <button class="btn btn-outline" id="sync-go-btn">Sync with Go Server</button>
+            </div>
+            <p id="sync-status" style="font-size:11px; color:var(--accent); margin-top:10px;"></p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="mobile-nav">
+    <button class="active" data-page="today">◷<span data-i18n="navToday">Today</span></button>
+    <button data-page="vision">◎<span data-i18n="navVision">Vision</span></button>
+    <button data-page="focus">◉<span data-i18n="navFocus">Focus</span></button>
+    <button data-page="stats">▥<span data-i18n="navStats">Stats</span></button>
+    <button data-page="more">⌘<span data-i18n="navMore">More</span></button>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>
