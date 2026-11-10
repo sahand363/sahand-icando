@@ -1,0 +1,16 @@
+{
+  "name": "Sahand I CanDo — NOIR OS",
+  "short_name": "I CanDo",
+  "description": "Know your direction. Own your time. Build your next self.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#101311",
+  "theme_color": "#101311",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='120' fill='%23101311'/><text x='50%' y='58%' font-family='sans-serif' font-weight='800' font-size='240' fill='%2336b887' text-anchor='middle'>S</text></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
