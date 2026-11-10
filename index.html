@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="noir">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#090A0C" />
+  <link rel="manifest" href="manifest.json" />
+  <title>NOIR — Personal Operating System</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;0,9..40,800&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Desktop Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-mark">N</span>
+        <div>
+          <strong>NOIR</strong>
+          <small>PERSONAL OS</small>
+        </div>
+      </div>
+
+      <div class="sidebar-label" data-i18n="workspace">WORKSPACE</div>
+      <nav class="nav-list" aria-label="Main Navigation">
+        <button class="nav-item active" data-page="today">
+          <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+          <span data-i18n="navToday">Today</span>
+        </button>
+        <button class="nav-item" data-page="vision">
+          <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="10"/></svg></span>
+          <span data-i18n="navVision">Vision</span>
+        </button>
+        <button class="nav-item" data-page="focus">
+          <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></span>
+          <span data-i18n="navFocus">Focus</span>
+        </button>
+        <button class="nav-item" data-page="stats">
+          <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></span>
+          <span data-i18n="navStats">Statistics</span>
+        </button>
+        <button class="nav-item" data-page="more">
+          <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+          <span data-i18n="navMore">More</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="mini-profile">
+          <div class="avatar">S</div>
+          <div>
+            <strong>Sahand</strong>
+            <small data-i18n="tierPro">Standard Edition</small>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Dynamic Container -->
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <div class="eyebrow" id="current-date-label">TUESDAY · NOVEMBER 10, 2026</div>
+          <h1 id="page-title">Today's Focus</h1>
+        </div>
+        <div class="top-actions">
+          <div class="status-badge">
+            <span class="live-dot"></span>
+            <span data-i18n="momentumStatus">High Momentum</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- PAGE 1: TODAY -->
+      <section class="page active" id="page-today">
+        <div class="grid-2col">
+          <!-- Mission Card -->
+          <article class="card mission-card">
+            <div class="card-header">
+              <span class="tag tag-accent" data-i18n="primaryMission">Primary Mission</span>
+              <span class="eyebrow">90 MIN EST</span>
+            </div>
+            <h2 data-i18n="missionTitle">Complete NOIR Core Visual Skeleton</h2>
+            <p data-i18n="missionDesc">Polish Phase 1 components, typography tokens, responsive layouts, and PWA structure.</p>
+            
+            <div class="progress-bar-wrapper">
+              <div class="progress-meta">
+                <span data-i18n="missionProgress">Progress</span>
+                <strong>65%</strong>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width: 65%;"></div></div>
+            </div>
+
+            <button class="btn btn-primary" data-action="quick-focus">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <span data-i18n="startFocus">Start Focus Session</span>
+            </button>
+          </article>
+
+          <!-- Daily Momentum Circle -->
+          <article class="card momentum-card">
+            <span class="eyebrow" data-i18n="dailyScore">Daily Completion</span>
+            <div class="circle-progress">
+              <div class="circle-inner">
+                <strong>74%</strong>
+                <span data-i18n="tasksCount">5 of 7 Done</span>
+              </div>
+            </div>
+            <p class="eyebrow" style="margin-top: 4px;" data-i18n="onTrack">Optimal Flow State</p>
+          </article>
+        </div>
+
+        <div class="grid-2col">
+          <!-- Upcoming Tasks -->
+          <article class="card">
+            <div class="card-header">
+              <h3 data-i18n="upcomingTasks">Upcoming Tasks</h3>
+              <span class="tag">Today</span>
+            </div>
+            <div class="task-list" id="task-list-container">
+              <!-- Dynamically populated / interactive tasks -->
+            </div>
+          </article>
+
+          <!-- Daily Timeline & Health Summary -->
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <!-- Timeline -->
+            <article class="card">
+              <div class="card-header">
+                <h3 data-i18n="timeline">Schedule</h3>
+                <span class="eyebrow">NOW: 14:15</span>
+              </div>
+              <div class="timeline">
+                <div class="timeline-item">
+                  <span class="timeline-time">10:00</span>
+                  <div class="timeline-block">
+                    <strong data-i18n="timeBlock1">Architecture Review</strong>
+                    <small>System & UX tokens</small>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <span class="timeline-time">14:00</span>
+                  <div class="timeline-block current">
+                    <strong data-i18n="timeBlock2">Deep Focus Session</strong>
+                    <small data-i18n="timeBlock2Sub">Phase 1 Visual Skeleton</small>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <span class="timeline-time">17:30</span>
+                  <div class="timeline-block">
+                    <strong data-i18n="timeBlock3">Music Production</strong>
+                    <small>Arrangement & mixing draft</small>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Sleep & Consistency Cards -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+              <article class="card" style="padding: 18px;">
+                <span class="eyebrow" data-i18n="sleepSummary">Sleep</span>
+                <strong style="font-size: 22px; display: block; margin: 8px 0 2px;">7h 45m</strong>
+                <span style="font-size: 11px; color: var(--accent);">92% Optimal Rest</span>
+              </article>
+              <article class="card" style="padding: 18px;">
+                <span class="eyebrow" data-i18n="streakSummary">Streak</span>
+                <strong style="font-size: 22px; display: block; margin: 8px 0 2px;">14 Days</strong>
+                <span style="font-size: 11px; color: var(--muted);" data-i18n="streakMeta">Consistent Flow</span>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 2: VISION -->
+      <section class="page" id="page-vision">
+        <div class="goal-hierarchy-nav">
+          <button class="hierarchy-pill active" data-horizon="year">Yearly Vision</button>
+          <button class="hierarchy-pill" data-horizon="sixMonths">6 Months</button>
+          <button class="hierarchy-pill" data-horizon="quarter">Quarterly</button>
+          <button class="hierarchy-pill" data-horizon="month">Monthly</button>
+          <button class="hierarchy-pill" data-horizon="week">Weekly</button>
+        </div>
+
+        <div class="grid-3col">
+          <article class="card goal-card">
+            <div class="goal-header">
+              <span class="tag tag-accent">Music & Career</span>
+              <span class="eyebrow">Q4 2026</span>
+            </div>
+            <h4 class="goal-title">Produce & Release EP</h4>
+            <p style="font-size: 12px; color: var(--muted); margin: 6px 0 16px;">Publish a cohesive 4-track electronic/cinematic EP on major platforms.</p>
+            <div class="progress-bar-wrapper">
+              <div class="progress-meta">
+                <span>Milestone: 3/4 Tracks Mastered</span>
+                <strong>75%</strong>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width: 75%;"></div></div>
+            </div>
+          </article>
+
+          <article class="card goal-card">
+            <div class="goal-header">
+              <span class="tag">Personal Projects</span>
+              <span class="eyebrow">H2 2026</span>
+            </div>
+            <h4 class="goal-title">Launch NOIR OS</h4>
+            <p style="font-size: 12px; color: var(--muted); margin: 6px 0 16px;">Ship Phase 1 and prepare interactive ecosystem for daily usage.</p>
+            <div class="progress-bar-wrapper">
+              <div class="progress-meta">
+                <span>Milestone: Visual Foundation</span>
+                <strong>60%</strong>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width: 60%;"></div></div>
+            </div>
+          </article>
+
+          <article class="card goal-card">
+            <div class="goal-header">
+              <span class="tag">Lifestyle</span>
+              <span class="eyebrow">Ongoing</span>
+            </div>
+            <h4 class="goal-title">Sleep & Athletic Form</h4>
+            <p style="font-size: 12px; color: var(--muted); margin: 6px 0 16px;">Maintain 7.5h nightly sleep and 4x weekly resistance training.</p>
+            <div class="progress-bar-wrapper">
+              <div class="progress-meta">
+                <span>Monthly Target Met</span>
+                <strong>88%</strong>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width: 88%;"></div></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- PAGE 3: FOCUS -->
+      <section class="page" id="page-focus">
+        <div class="focus-container">
+          <span class="tag tag-accent" data-i18n="focusSessionTag">Deep Work Session</span>
+          <h2 style="font-size: 26px; margin: 12px 0 6px;" data-i18n="focusSessionTitle">Phase 1 Code Architecture</h2>
+          <p style="color: var(--muted); font-size: 13px;" data-i18n="focusSessionSub">Distraction-free environment. Single task execution.</p>
+
+          <div class="focus-timer-ring">
+            <div class="focus-timer-content">
+              <div class="focus-display" id="focus-timer-display">50:00</div>
+              <span class="eyebrow" data-i18n="remainingLabel">MINUTES REMAINING</span>
+            </div>
+          </div>
+
+          <div class="focus-actions">
+            <button class="btn btn-primary" id="focus-start-btn">
+              <span id="focus-btn-label">Start Session</span>
+            </button>
+            <button class="btn btn-secondary" id="focus-reset-btn">Reset</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 4: STATISTICS -->
+      <section class="page" id="page-stats">
+        <div class="grid-3col">
+          <article class="card">
+            <span class="eyebrow" data-i18n="statDeepWork">Weekly Deep Work</span>
+            <div class="stat-metric">28.5 hrs</div>
+            <span style="font-size: 12px; color: var(--accent);">↑ 14% vs last week</span>
+          </article>
+          <article class="card">
+            <span class="eyebrow" data-i18n="statMonthlyWork">Monthly Work</span>
+            <div class="stat-metric">112 hrs</div>
+            <span style="font-size: 12px; color: var(--muted);">Target: 120 hrs</span>
+          </article>
+          <article class="card">
+            <span class="eyebrow" data-i18n="statScore">Productivity Score</span>
+            <div class="stat-metric">88 / 100</div>
+            <span style="font-size: 12px; color: var(--accent);">Top Tier Flow</span>
+          </article>
+        </div>
+
+        <article class="card" style="margin-top: 10px;">
+          <div class="card-header">
+            <div>
+              <span class="eyebrow" data-i18n="focusTrend">7-Day Consistency</span>
+              <h3 data-i18n="focusHoursTitle">Deep Focus Hours</h3>
+            </div>
+            <span class="tag tag-accent">This Week</span>
+          </div>
+
+          <div class="chart-bars">
+            <div class="chart-col">
+              <div class="chart-bar-fill" style="height: 60%;"></div>
+              <span class="chart-label">Sat</span>
+            </div>
+            <div class="chart-col">
+              <div class="chart-bar-fill" style="height: 75%;"></div>
+              <span class="chart-label">Sun</span>
+            </div>
+            <div class="chart-col">
+              <div class="chart-bar-fill" style="height: 85%;"></div>
+              <span class="chart-label">Mon</span>
+            </div>
+            <div class="chart-col">
+              <div class="chart-bar-fill active" style="height: 95%;"></div>
+              <span class="chart-label">Tue</span>
+            </div>
+            <div class="chart-col">
+              <div class="chart-bar-fill" style="height: 70%;"></div>
+              <span class="chart-label">Wed</span>
+            </div>
+            <div class="chart-col">
+              <div class="chart-bar-fill" style="height: 50%;"></div>
+              <span class="chart-label">Thu</span>
+            </div>
+            <div class="chart-col">
+              <div class="chart-bar-fill" style="height: 40%;"></div>
+              <span class="chart-label">Fri</span>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- PAGE 5: MORE / SETTINGS -->
+      <section class="page" id="page-more">
+        <div class="card settings-group">
+          <div class="card-header">
+            <h3>Preferences & Language</h3>
+          </div>
+          
+          <!-- Language Selector -->
+          <div class="setting-row">
+            <div class="setting-label">
+              <strong>Interface Language</strong>
+              <small>Switch between English (default) and Persian</small>
+            </div>
+            <select class="lang-select" id="lang-selector">
+              <option value="en">English</option>
+              <option value="fa">Persian</option>
+            </select>
+          </div>
+
+          <!-- Theme Selector -->
+          <div class="setting-row">
+            <div class="setting-label">
+              <strong>Visual Theme</strong>
+              <small>Cinematic palette selection</small>
+            </div>
+            <select class="theme-select" id="theme-selector">
+              <option value="noir">Noir (Dark Graphite)</option>
+              <option value="dusk">Dusk (Warm Charcoal)</option>
+              <option value="daylight">Daylight (Calm Light)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="card settings-group">
+          <div class="card-header">
+            <h3>Routines & Targets</h3>
+          </div>
+          <div class="setting-row">
+            <div class="setting-label">
+              <strong>Target Bedtime</strong>
+              <small>Digital shutdown notification</small>
+            </div>
+            <span class="tag">23:00</span>
+          </div>
+          <div class="setting-row">
+            <div class="setting-label">
+              <strong>Daily Deep Work Target</strong>
+              <small>Minimum uninterrupted focus time</small>
+            </div>
+            <span class="tag">4.5 Hours</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>About NOIR</h3>
+          </div>
+          <p style="font-size: 13px; color: var(--muted); line-height: 1.8;">
+            NOIR is a premium personal operating system crafted for peak focus, creative momentum, and strategic clarity. Built with a mobile-first, distraction-free aesthetic.
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Mobile Fixed Bottom Navigation -->
+  <nav class="mobile-nav" aria-label="Mobile Navigation">
+    <button class="mobile-nav-btn active" data-page="today">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span data-i18n="navToday">Today</span>
+    </button>
+    <button class="mobile-nav-btn" data-page="vision">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="10"/></svg>
+      <span data-i18n="navVision">Vision</span>
+    </button>
+    <button class="mobile-nav-btn" data-page="focus">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+      <span data-i18n="navFocus">Focus</span>
+    </button>
+    <button class="mobile-nav-btn" data-page="stats">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+      <span data-i18n="navStats">Stats</span>
+    </button>
+    <button class="mobile-nav-btn" data-page="more">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      <span data-i18n="navMore">More</span>
+    </button>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>
