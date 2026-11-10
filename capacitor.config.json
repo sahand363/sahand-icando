@@ -1,0 +1,9 @@
+{
+  "appId": "com.sahand.icando",
+  "appName": "Sahand I CanDo",
+  "webDir": "public",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  }
+}
