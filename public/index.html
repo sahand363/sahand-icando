@@ -2,18 +2,71 @@
 <html lang="en" dir="ltr" data-theme="noir">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#101311" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#090A0C" />
   <link rel="manifest" href="manifest.json" />
   <title>Sahand I CanDo — NOIR Personal OS</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Vazirmatn:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
+  <!-- First-Time Onboarding Screen -->
+  <div class="onboarding-overlay" id="onboarding-modal">
+    <div class="onboarding-card">
+      <div class="onboarding-top">
+        <div class="brand" style="margin:0;">
+          <span class="brand-mark">S</span>
+          <div>
+            <strong>I CANDO</strong>
+            <small>PERSONAL OS</small>
+          </div>
+        </div>
+        <select id="onboard-lang" class="input-field" style="width:auto; padding:6px 10px; font-size:12px;">
+          <option value="en">English</option>
+          <option value="fa">Persian (فارسی)</option>
+        </select>
+      </div>
+
+      <h2 style="font-size:20px; margin-bottom:6px;" data-i18n="welcomeTitle">Welcome to I CanDo</h2>
+      <p style="font-size:12.5px; color:var(--muted); margin-bottom:18px;" data-i18n="welcomeSub">
+        You don't need to change your entire life in one day. Let's start with your name and your first main goal.
+      </p>
+
+      <form id="onboarding-form" class="form-stack">
+        <div>
+          <label class="eyebrow" data-i18n="askNameLabel">YOUR NAME</label>
+          <input type="text" id="onboard-name" class="input-field" style="margin-top:6px;" data-i18n-placeholder="askNamePlaceholder" placeholder="Enter your name..." required />
+        </div>
+
+        <div style="margin-top:6px;">
+          <label class="eyebrow" data-i18n="askGoalLabel">YOUR FIRST MAIN GOAL</label>
+          <input type="text" id="onboard-goal" class="input-field" style="margin-top:6px;" data-i18n-placeholder="askGoalPlaceholder" placeholder="What is your #1 goal right now?" required />
+        </div>
+
+        <div style="margin-top:6px;">
+          <label class="eyebrow" data-i18n="askHorizonLabel">GOAL TIME HORIZON</label>
+          <select id="onboard-horizon" class="input-field" style="margin-top:6px;">
+            <option value="Yearly" data-i18n="hYearly">Yearly Goal</option>
+            <option value="6-Month" data-i18n="hSixMonth">6-Month Goal</option>
+            <option value="Quarterly" data-i18n="hQuarterly">Quarterly Goal</option>
+            <option value="Monthly" data-i18n="hMonthly">Monthly Goal</option>
+            <option value="Weekly" data-i18n="hWeekly">Weekly Goal</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="margin-top:12px; width:100%;" data-i18n="startJourneyBtn">
+          Begin My Journey
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main Application Shell -->
   <div class="app-shell">
-    <!-- Sidebar -->
+    <!-- Desktop Sidebar -->
     <aside class="sidebar">
       <a class="brand" href="#">
         <span class="brand-mark">S</span>
@@ -22,16 +75,17 @@
           <small>NOIR PERSONAL OS</small>
         </div>
       </a>
-      <div class="eyebrow" data-i18n="workspace">SYSTEM</div>
+      <div class="eyebrow" data-i18n="workspace">WORKSPACE</div>
       <nav class="nav-list">
-        <button class="nav-item active" data-page="today">◷ <span data-i18n="navToday">Today</span></button>
-        <button class="nav-item" data-page="vision">◎ <span data-i18n="navVision">Vision</span></button>
-        <button class="nav-item" data-page="focus">◉ <span data-i18n="navFocus">Focus</span></button>
-        <button class="nav-item" data-page="stats">▥ <span data-i18n="navStats">Statistics</span></button>
-        <button class="nav-item" data-page="more">⌘ <span data-i18n="navMore">More</span></button>
+        <button class="nav-item active" data-page="today"><span>◷</span> <span data-i18n="navToday">Today</span></button>
+        <button class="nav-item" data-page="vision"><span>◎</span> <span data-i18n="navVision">Vision</span></button>
+        <button class="nav-item" data-page="focus"><span>◉</span> <span data-i18n="navFocus">Focus</span></button>
+        <button class="nav-item" data-page="stats"><span>▥</span> <span data-i18n="navStats">Statistics</span></button>
+        <button class="nav-item" data-page="more"><span>⌘</span> <span data-i18n="navMore">More</span></button>
       </nav>
       <div class="sidebar-bottom">
-        <strong data-i18n="motto">One day at a time.</strong>
+        <strong id="sidebar-user-name">User</strong>
+        <div style="font-size:11px; margin-top:2px;" data-i18n="motto">One day at a time.</div>
       </div>
     </aside>
 
@@ -39,191 +93,251 @@
     <main class="main-content">
       <header class="topbar">
         <div>
-          <div class="eyebrow" id="date-display">DAILY COMMAND CENTER</div>
-          <h1 id="page-title">Today's Command Center</h1>
+          <div class="eyebrow" id="date-display">TODAY</div>
+          <h1 id="page-title">Today</h1>
+          <div class="greeting-sub" id="user-greeting"></div>
         </div>
-        <div class="top-actions">
-          <span class="badge badge-accent" id="streak-badge">🔥 5 Day Streak</span>
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <span class="badge" id="recovery-badge" style="display:none;" data-i18n="recoveryActive">Recovery Day</span>
+          <span class="badge badge-accent" id="streak-badge">0</span>
         </div>
       </header>
 
-      <!-- 1. TODAY -->
+      <!-- PAGE 1: TODAY -->
       <section class="page active" id="page-today">
         <div class="grid-2">
+          <!-- Main Mission -->
           <article class="card">
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <span class="badge badge-accent" data-i18n="mainMission">Main Mission</span>
-              <button class="btn btn-outline" id="edit-mission-btn" style="padding:4px 10px; font-size:10px;">Edit</button>
+            <div class="card-header">
+              <span class="badge badge-accent" data-i18n="mainMission">Today's Main Mission</span>
+              <span class="eyebrow" id="mission-pct-label">0%</span>
             </div>
-            <h2 id="mission-title" style="margin:14px 0 6px; font-size:20px;">Complete core architecture & test APK</h2>
-            <p style="font-size:12px; color:var(--muted);" data-i18n="missionHint">The one result that makes today valuable.</p>
-            <div class="progress-track"><div class="progress-fill" id="mission-bar" style="width: 50%;"></div></div>
-            <div style="display:flex; gap:10px; margin-top:16px;">
-              <button class="btn btn-primary" data-goto="focus" data-i18n="startFocusBtn">Start Focus Session →</button>
-              <button class="btn btn-outline" id="mission-step-btn">+25%</button>
+            <p style="font-size:12px; color:var(--muted); margin-bottom:10px;" data-i18n="missionHint">
+              Identify the one result that will make today valuable.
+            </p>
+
+            <form id="mission-form" class="form-row">
+              <input type="text" id="mission-input" class="input-field" data-i18n-placeholder="missionPlaceholder" placeholder="Write today's main mission..." required />
+              <button type="submit" class="btn btn-outline" data-i18n="saveBtn">Save</button>
+            </form>
+
+            <div class="progress-track">
+              <div class="progress-fill" id="mission-bar" style="width: 0%;"></div>
+            </div>
+
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+              <button class="btn btn-primary btn-sm" data-goto="focus" data-i18n="startFocusBtn">Start Focus Session</button>
+              <button class="btn btn-outline btn-sm" id="mission-step-btn" data-i18n="advanceMissionBtn">+25% Progress</button>
             </div>
           </article>
 
-          <article class="card" style="display:flex; flex-direction:column; justify-content:center;">
-            <span class="eyebrow" data-i18n="dailyOverview">DAILY OVERVIEW</span>
-            <div style="font-size:36px; font-weight:800; margin:8px 0;" id="completion-rate">0%</div>
-            <p style="font-size:12px; color:var(--muted);" id="tasks-summary-text">0 of 0 tasks completed</p>
-            <div class="progress-track"><div class="progress-fill" id="daily-bar" style="width:0%"></div></div>
-            <div style="margin-top:12px; font-size:12px; display:flex; justify-content:space-between;">
+          <!-- Daily Progress Overview -->
+          <article class="card">
+            <span class="eyebrow" data-i18n="dailyProgress">DAILY PROGRESS</span>
+            <div style="font-size:34px; font-weight:800; margin:6px 0;" id="completion-rate">0%</div>
+            <p style="font-size:12px; color:var(--muted);" id="tasks-summary-text">0 / 0</p>
+            <div class="progress-track">
+              <div class="progress-fill" id="daily-bar" style="width:0%"></div>
+            </div>
+            <div style="margin-top:14px; font-size:12.5px; display:flex; justify-content:space-between;">
               <span style="color:var(--muted);" data-i18n="focusedToday">Focused Today:</span>
-              <strong id="today-focus-mins">0 mins</strong>
+              <strong id="today-focus-mins">0m</strong>
             </div>
           </article>
         </div>
 
         <div class="grid-2">
-          <!-- Tasks -->
+          <!-- Daily Tasks -->
           <article class="card">
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <h3 data-i18n="dailyTasks">Daily Tasks</h3>
-              <span class="badge" id="recovery-indicator" style="display:none;">Recovery Mode Active</span>
+            <div class="card-header">
+              <h3 class="card-title" data-i18n="dailyTasks">Daily Tasks</h3>
             </div>
-            <form class="inline-form" id="add-task-form">
-              <input type="text" id="new-task-input" class="input-field" placeholder="Add a realistic task..." required />
-              <select id="new-task-priority" class="input-field" style="max-width:110px;">
-                <option value="Main">Main</option>
-                <option value="Secondary">Secondary</option>
-                <option value="Optional">Optional</option>
-              </select>
-              <button type="submit" class="btn btn-primary">+</button>
+            <form id="add-task-form" class="form-stack">
+              <input type="text" id="new-task-input" class="input-field" data-i18n-placeholder="taskPlaceholder" placeholder="Add a task for today..." required />
+              <div class="form-row">
+                <select id="new-task-priority" class="input-field">
+                  <option value="Main" data-i18n="prioMain">Main Priority</option>
+                  <option value="Secondary" data-i18n="prioSecondary">Secondary</option>
+                  <option value="Optional" data-i18n="prioOptional">Optional</option>
+                </select>
+                <button type="submit" class="btn btn-primary" data-i18n="addBtn">Add</button>
+              </div>
             </form>
-            <div id="tasks-container"></div>
+            <div class="item-list" id="tasks-container"></div>
           </article>
 
           <!-- Daily Schedule -->
           <article class="card">
-            <h3 data-i18n="dailySchedule" style="margin-bottom:12px;">Daily Schedule</h3>
-            <div class="task-row"><strong style="width:55px; font-size:12px; color:var(--accent);">07:00</strong><span style="font-size:13px;">Wake up & Morning Routine</span></div>
-            <div class="task-row"><strong style="width:55px; font-size:12px; color:var(--accent);">09:00</strong><span style="font-size:13px;">Deep Work (Main Mission)</span></div>
-            <div class="task-row"><strong style="width:55px; font-size:12px; color:var(--accent);">12:00</strong><span style="font-size:13px;">Creative Work / Music Practice</span></div>
-            <div class="task-row"><strong style="width:55px; font-size:12px; color:var(--accent);">15:00</strong><span style="font-size:13px;">Exercise & Personal Growth</span></div>
-            <div class="task-row"><strong style="width:55px; font-size:12px; color:var(--accent);">18:00</strong><span style="font-size:13px;">Evening Review & Next Day Plan</span></div>
-            <div class="task-row"><strong style="width:55px; font-size:12px; color:var(--accent);">22:30</strong><span style="font-size:13px;">Digital Shutdown & Sleep Prep</span></div>
+            <div class="card-header">
+              <h3 class="card-title" data-i18n="dailySchedule">Daily Schedule</h3>
+            </div>
+            <form id="add-schedule-form" class="form-stack">
+              <div class="form-row">
+                <input type="time" id="sched-time-input" class="input-field" value="09:00" required />
+                <input type="text" id="sched-title-input" class="input-field" data-i18n-placeholder="schedPlaceholder" placeholder="Activity or time block..." required />
+                <button type="submit" class="btn btn-primary" data-i18n="addBtn">Add</button>
+              </div>
+            </form>
+            <div class="item-list" id="schedule-container"></div>
           </article>
         </div>
       </section>
 
-      <!-- 2. VISION -->
+      <!-- PAGE 2: VISION -->
       <section class="page" id="page-vision">
         <article class="card">
-          <h3 data-i18n="addGoalTitle">Connect Long-Term Vision to Milestones</h3>
-          <form class="inline-form" id="add-goal-form">
-            <input type="text" id="goal-title-input" class="input-field" placeholder="Goal (e.g. Release Original Music EP)" required />
-            <select id="goal-horizon-input" class="input-field" style="max-width:130px;">
-              <option value="Yearly">Yearly</option>
-              <option value="6-Month">6-Month</option>
-              <option value="Quarterly">Quarterly</option>
-              <option value="Monthly">Monthly</option>
-              <option value="Weekly">Weekly</option>
-            </select>
-            <button type="submit" class="btn btn-primary">Add Goal</button>
+          <h3 class="card-title" data-i18n="addGoalTitle">Add a Goal</h3>
+          <p style="font-size:12px; color:var(--muted); margin-top:4px;" data-i18n="visionHint">
+            Break long-term ambitions into smaller milestones.
+          </p>
+          <form id="add-goal-form" class="form-stack">
+            <input type="text" id="goal-title-input" class="input-field" data-i18n-placeholder="goalPlaceholder" placeholder="Enter a new goal..." required />
+            <div class="form-row">
+              <select id="goal-horizon-input" class="input-field">
+                <option value="Yearly" data-i18n="hYearly">Yearly Goal</option>
+                <option value="6-Month" data-i18n="hSixMonth">6-Month Goal</option>
+                <option value="Quarterly" data-i18n="hQuarterly">Quarterly Goal</option>
+                <option value="Monthly" data-i18n="hMonthly">Monthly Goal</option>
+                <option value="Weekly" data-i18n="hWeekly">Weekly Goal</option>
+              </select>
+              <button type="submit" class="btn btn-primary" data-i18n="addGoalBtn">Add Goal</button>
+            </div>
           </form>
         </article>
-        <div class="grid-3" id="goals-container"></div>
+
+        <div id="goals-container"></div>
       </section>
 
-      <!-- 3. FOCUS -->
+      <!-- PAGE 3: FOCUS -->
       <section class="page" id="page-focus">
         <div class="grid-2">
           <article class="card" style="text-align:center;">
-            <span class="badge badge-accent">DEEP WORK ENGINE</span>
-            <div style="display:flex; justify-content:center; gap:6px; margin-top:14px;">
-              <button class="btn btn-outline dur-btn" data-mins="25">25m</button>
-              <button class="btn btn-outline dur-btn" data-mins="45">45m</button>
-              <button class="btn btn-outline dur-btn" data-mins="60">60m</button>
-              <button class="btn btn-outline dur-btn" data-mins="90">90m</button>
+            <span class="badge badge-accent" data-i18n="focusEngine">DEEP WORK SESSION</span>
+            <div class="pill-group">
+              <button class="btn btn-outline btn-sm dur-btn" data-mins="25">25m</button>
+              <button class="btn btn-outline btn-sm dur-btn" data-mins="45">45m</button>
+              <button class="btn btn-outline btn-sm dur-btn" data-mins="60">60m</button>
+              <button class="btn btn-outline btn-sm dur-btn" data-mins="90">90m</button>
             </div>
+
             <div class="timer-ring">
               <div class="timer-inner">
                 <strong id="timer-display">45:00</strong>
-                <small style="color:var(--muted); font-size:11px;">STAY FOCUSED</small>
+                <small style="color:var(--muted); font-size:11px;" data-i18n="stayFocused">SINGLE TASK FOCUS</small>
               </div>
             </div>
-            <div style="display:flex; justify-content:center; gap:10px;">
-              <button class="btn btn-primary" id="timer-toggle">Start Focus</button>
-              <button class="btn btn-outline" id="timer-complete">Log Completed Session</button>
-              <button class="btn btn-outline" id="timer-reset">Reset</button>
+
+            <div style="margin-bottom:12px;">
+              <input type="text" id="focus-task-input" class="input-field" style="text-align:center;" data-i18n-placeholder="focusTaskPlaceholder" placeholder="What are you focusing on right now?" />
+            </div>
+
+            <div class="pill-group">
+              <button class="btn btn-primary" id="timer-toggle" data-i18n="startTimerBtn">Start</button>
+              <button class="btn btn-outline" id="timer-complete" data-i18n="logSessionBtn">Complete & Save</button>
+              <button class="btn btn-outline" id="timer-reset" data-i18n="resetBtn">Reset</button>
             </div>
           </article>
 
           <article class="card">
-            <h3>Recent Focus Sessions</h3>
-            <p style="font-size:12px; color:var(--muted); margin-bottom:12px;">Sustained attention records</p>
-            <div id="focus-history-container"></div>
+            <h3 class="card-title" data-i18n="focusHistory">Completed Focus Sessions</h3>
+            <p style="font-size:12px; color:var(--muted); margin-bottom:10px;" data-i18n="focusHistorySub">
+              Your recorded deep work blocks
+            </p>
+            <div class="item-list" id="focus-history-container"></div>
           </article>
         </div>
       </section>
 
-      <!-- 4. STATISTICS -->
+      <!-- PAGE 4: STATISTICS -->
       <section class="page" id="page-stats">
         <div class="grid-3">
           <article class="card">
-            <span class="eyebrow">TOTAL FOCUS TIME</span>
-            <div style="font-size:28px; font-weight:800; margin:8px 0;" id="stat-total-focus">0 mins</div>
-            <small style="color:var(--accent);">Meaningful deep work</small>
+            <span class="eyebrow" data-i18n="statTotalFocus">TOTAL FOCUS TIME</span>
+            <div style="font-size:26px; font-weight:800; margin:6px 0;" id="stat-total-focus">0m</div>
+            <small style="color:var(--accent); font-size:11px;" data-i18n="statFocusSub">Deep work logged</small>
           </article>
           <article class="card">
-            <span class="eyebrow">COMPLETED SESSIONS</span>
-            <div style="font-size:28px; font-weight:800; margin:8px 0;" id="stat-sessions-count">0</div>
-            <small style="color:var(--muted);">Recorded blocks</small>
+            <span class="eyebrow" data-i18n="statSessions">FOCUS SESSIONS</span>
+            <div style="font-size:26px; font-weight:800; margin:6px 0;" id="stat-sessions-count">0</div>
+            <small style="color:var(--muted); font-size:11px;" data-i18n="statSessionsSub">Completed sessions</small>
           </article>
           <article class="card">
-            <span class="eyebrow">LAST SLEEP QUALITY</span>
-            <div style="font-size:28px; font-weight:800; margin:8px 0;" id="stat-sleep-last">8.2 / 10</div>
-            <small style="color:var(--accent);">7.5 hrs recorded</small>
+            <span class="eyebrow" data-i18n="statSleep">LATEST SLEEP</span>
+            <div style="font-size:26px; font-weight:800; margin:6px 0;" id="stat-sleep-last">—</div>
+            <small style="color:var(--accent); font-size:11px;" id="stat-sleep-sub"></small>
           </article>
         </div>
 
         <article class="card">
-          <h3>Log Sleep & Energy</h3>
-          <form class="inline-form" id="sleep-form">
-            <input type="text" id="sleep-hours" class="input-field" placeholder="Sleep duration (e.g. 7h 45m)" required />
-            <input type="number" id="sleep-score" class="input-field" placeholder="Quality (1-10)" min="1" max="10" step="0.1" required />
-            <button type="submit" class="btn btn-primary">Save Sleep Log</button>
+          <h3 class="card-title" data-i18n="logSleepTitle">Record Sleep & Rest</h3>
+          <form id="sleep-form" class="form-stack">
+            <div class="form-row">
+              <input type="number" id="sleep-hours" class="input-field" data-i18n-placeholder="sleepHoursPlaceholder" placeholder="Hours slept (e.g. 7.5)" step="0.1" min="0" max="24" required />
+              <input type="number" id="sleep-score" class="input-field" data-i18n-placeholder="sleepQualityPlaceholder" placeholder="Quality (1 to 10)" min="1" max="10" step="0.5" required />
+              <button type="submit" class="btn btn-primary" data-i18n="saveBtn">Save</button>
+            </div>
           </form>
+          <div class="item-list" id="sleep-history-container"></div>
         </article>
       </section>
 
-      <!-- 5. MORE -->
+      <!-- PAGE 5: MORE -->
       <section class="page" id="page-more">
         <div class="grid-2">
           <article class="card">
-            <h3>Appearance & Language</h3>
-            <div class="task-row" style="justify-content:space-between;">
-              <span>Language</span>
-              <select id="lang-select" class="input-field" style="max-width:140px;">
-                <option value="en">English</option>
-                <option value="fa">Persian</option>
-              </select>
-            </div>
-            <div class="task-row" style="justify-content:space-between;">
-              <span>Visual Theme</span>
-              <select id="theme-select" class="input-field" style="max-width:140px;">
-                <option value="noir">Noir</option>
-                <option value="dusk">Dusk</option>
-                <option value="daylight">Daylight</option>
-              </select>
-            </div>
-            <div class="task-row" style="justify-content:space-between;">
-              <div>
-                <strong>Recovery Day Mode</strong>
-                <div style="font-size:11px; color:var(--muted);">Never let one bad day become a bad week.</div>
+            <h3 class="card-title" style="margin-bottom:10px;" data-i18n="settingsTitle">Personal Settings</h3>
+
+            <div class="item-row" style="justify-content:space-between;">
+              <span style="font-size:13px;" data-i18n="yourNameLabel">Your Name</span>
+              <div style="display:flex; gap:6px;">
+                <input type="text" id="settings-name-input" class="input-field" style="max-width:140px; padding:6px 10px;" />
+                <button class="btn btn-outline btn-sm" id="save-name-btn" data-i18n="saveBtn">Save</button>
               </div>
-              <button class="btn btn-outline" id="recovery-toggle-btn">Toggle</button>
+            </div>
+
+            <div class="item-row" style="justify-content:space-between;">
+              <span style="font-size:13px;" data-i18n="langLabel">Language</span>
+              <select id="lang-select" class="input-field" style="max-width:145px; padding:7px 10px;">
+                <option value="en">English</option>
+                <option value="fa">Persian (فارسی)</option>
+              </select>
+            </div>
+
+            <div class="item-row" style="justify-content:space-between;">
+              <span style="font-size:13px;" data-i18n="themeLabel">Theme</span>
+              <select id="theme-select" class="input-field" style="max-width:145px; padding:7px 10px;">
+                <option value="noir">Noir (Dark)</option>
+                <option value="dusk">Dusk (Slate)</option>
+                <option value="daylight">Daylight (Light)</option>
+              </select>
+            </div>
+
+            <div class="item-row" style="justify-content:space-between;">
+              <div>
+                <strong style="font-size:13px; display:block;" data-i18n="recoveryTitle">Recovery Day Mode</strong>
+                <small style="font-size:11px; color:var(--muted);" data-i18n="recoveryDesc">Gentle restart after hard days</small>
+              </div>
+              <button class="btn btn-outline btn-sm" id="recovery-toggle-btn" data-i18n="toggleBtn">Toggle</button>
             </div>
           </article>
 
           <article class="card">
-            <h3>Data Backup & Go Server Sync</h3>
-            <p style="font-size:12px; color:var(--muted); margin-bottom:14px;">Your data stays local on your phone. Export anytime or sync with your Go server.</p>
-            <div style="display:flex; flex-wrap:wrap; gap:10px;">
-              <button class="btn btn-primary" id="export-data-btn">Export JSON Backup</button>
-              <button class="btn btn-outline" id="sync-go-btn">Sync with Go Server</button>
+            <h3 class="card-title" style="margin-bottom:10px;" data-i18n="routinesAndData">Routines & Data</h3>
+
+            <div class="item-row" style="justify-content:space-between;">
+              <span style="font-size:13px;" data-i18n="wakeTargetLabel">Target Wake-Up</span>
+              <input type="time" id="routine-wake" class="input-field" style="max-width:120px; padding:6px 10px;" />
+            </div>
+
+            <div class="item-row" style="justify-content:space-between;">
+              <span style="font-size:13px;" data-i18n="bedTargetLabel">Target Bedtime</span>
+              <input type="time" id="routine-bed" class="input-field" style="max-width:120px; padding:6px 10px;" />
+            </div>
+
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;">
+              <button class="btn btn-primary btn-sm" id="export-data-btn" data-i18n="exportBtn">Export Backup</button>
+              <button class="btn btn-outline btn-sm" id="sync-go-btn" data-i18n="syncBtn">Sync Server</button>
+              <button class="btn btn-danger btn-sm" id="reset-all-btn" data-i18n="resetAllBtn">Reset App Data</button>
             </div>
             <p id="sync-status" style="font-size:11px; color:var(--accent); margin-top:10px;"></p>
           </article>
@@ -232,13 +346,28 @@
     </main>
   </div>
 
-  <!-- Mobile Bottom Nav -->
-  <nav class="mobile-nav">
-    <button class="active" data-page="today">◷<span data-i18n="navToday">Today</span></button>
-    <button data-page="vision">◎<span data-i18n="navVision">Vision</span></button>
-    <button data-page="focus">◉<span data-i18n="navFocus">Focus</span></button>
-    <button data-page="stats">▥<span data-i18n="navStats">Stats</span></button>
-    <button data-page="more">⌘<span data-i18n="navMore">More</span></button>
+  <!-- Mobile Fixed 5-Tab Bottom Navigation -->
+  <nav class="mobile-nav" aria-label="Mobile Navigation">
+    <button class="active" data-page="today">
+      <span class="nav-ico">◷</span>
+      <span data-i18n="navToday">Today</span>
+    </button>
+    <button data-page="vision">
+      <span class="nav-ico">◎</span>
+      <span data-i18n="navVision">Vision</span>
+    </button>
+    <button data-page="focus">
+      <span class="nav-ico">◉</span>
+      <span data-i18n="navFocus">Focus</span>
+    </button>
+    <button data-page="stats">
+      <span class="nav-ico">▥</span>
+      <span data-i18n="navStats">Stats</span>
+    </button>
+    <button data-page="more">
+      <span class="nav-ico">⌘</span>
+      <span data-i18n="navMore">More</span>
+    </button>
   </nav>
 
   <script src="app.js"></script>
