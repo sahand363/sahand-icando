@@ -1,0 +1,13 @@
+{
+  "name": "sahand-icando",
+  "version": "1.0.0",
+  "description": "Sahand I CanDo — Personal Operating System",
+  "scripts": {
+    "sync": "cap sync"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/cli": "^6.0.0",
+    "@capacitor/core": "^6.0.0"
+  }
+}
