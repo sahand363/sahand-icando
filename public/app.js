@@ -10,7 +10,23 @@ const i18n = {
     askTopGoalPlaceholder: "Your most important yearly goal...",
     startBtn: "Begin",
     navigationLabel: "NAVIGATION",
-    settingsRibbonTitle: "Settings",
+    settingsTitle: "Settings",
+    langLabel: "Language",
+    themeLabel: "Theme",
+    historyBtnTitle: "History",
+    historyDesc: "Completed Other Tasks archived at end of day",
+    historyBtn: "History",
+    impHistoryBtnTitle: "Important History",
+    impHistoryDesc: "Finished important goals archived from Goals tab",
+    impHistoryBtn: "Important History",
+    historyModalTitle: "History",
+    historyModalSub: "Finished tasks moved here at the end of each day",
+    noHistoryYet: "No archived daily tasks yet. Completed tasks move here automatically at the end of the day.",
+    impHistoryModalTitle: "Important History",
+    impHistoryModalSub: "Completed important goals",
+    noImpHistoryYet: "No finished important goals archived yet.",
+    moveToImportantHistoryBtn: "★ Move to Important History",
+    movedToImpHistoryToast: "Moved to Important History!",
     tab1Nav: "To-Do List",
     tab2Nav: "Sleep Schedule",
     tab3Nav: "Workout Plan",
@@ -65,10 +81,11 @@ const i18n = {
     stepsCountPlaceholder: "Steps required",
     addGoalBtn: "Add Goal",
     filterAll: "All",
-    hYearly: "Yearly",
-    hSixMonth: "6-Month",
-    hThreeMonth: "3-Month",
+    hWeekly: "Weekly",
     hMonthly: "Monthly",
+    hThreeMonth: "3-Month",
+    hSixMonth: "6-Month",
+    hYearly: "Yearly",
     stepsRequired: "Steps Required",
     stepsDone: "Completed",
     noGoalsInFilter: "No goals in this timeline yet.",
@@ -81,7 +98,7 @@ const i18n = {
     noTop3Yet: "No Top 3 End-of-Year Goals added yet.",
     dataBackupTitle: "Data Backup",
     exportBtn: "Export JSON",
-    resetBtn: "Reset Data",
+    resetBtn: "Reset",
     confirmReset: "Reset all data and return to welcome screen?",
     pageTitles: {
       todo: "To-Do List",
@@ -100,7 +117,23 @@ const i18n = {
     askTopGoalPlaceholder: "اصلی‌ترین هدف شما تا پایان سال چیست؟",
     startBtn: "شروع",
     navigationLabel: "بخش‌های برنامه",
-    settingsRibbonTitle: "تنظیمات",
+    settingsTitle: "تنظیمات",
+    langLabel: "زبان برنامه",
+    themeLabel: "پوسته‌ی ظاهری",
+    historyBtnTitle: "تاریخچه (History)",
+    historyDesc: "کارهای فرعی انجام‌شده که در پایان روز به تاریخچه می‌روند",
+    historyBtn: "تاریخچه",
+    impHistoryBtnTitle: "تاریخچه مهم (Important History)",
+    impHistoryDesc: "اهداف مهم تکمیل‌شده که از تب اهداف منتقل شده‌اند",
+    impHistoryBtn: "تاریخچه مهم",
+    historyModalTitle: "تاریخچه کارهای روزمره",
+    historyModalSub: "کارهای انجام‌شده در پایان هر روز به اینجا منتقل می‌شوند",
+    noHistoryYet: "هنوز کاری در تاریخچه ثبت نشده است. کارهای انجام‌شده در پایان روز خودکار به اینجا منتقل می‌شوند.",
+    impHistoryModalTitle: "تاریخچه اهداف مهم",
+    impHistoryModalSub: "اهداف مهم تکمیل‌شده",
+    noImpHistoryYet: "هنوز هدف مهم تکمیل‌شده‌ای منتقل نشده است.",
+    moveToImportantHistoryBtn: "★ انتقال به تاریخچه مهم",
+    movedToImpHistoryToast: "به تاریخچه مهم منتقل شد!",
     tab1Nav: "لیست کارها",
     tab2Nav: "تنظیمات و برنامه‌ی خواب",
     tab3Nav: "برنامه‌ی ورزشی هفتگی",
@@ -155,10 +188,11 @@ const i18n = {
     stepsCountPlaceholder: "تعداد کل قدم‌ها",
     addGoalBtn: "افزودن هدف",
     filterAll: "همه",
-    hYearly: "سالانه",
-    hSixMonth: "شش‌ماهه",
-    hThreeMonth: "سه‌ماهه",
+    hWeekly: "هفتگی",
     hMonthly: "ماهانه",
+    hThreeMonth: "سه‌ماهه",
+    hSixMonth: "شش‌ماهه",
+    hYearly: "سالانه",
     stepsRequired: "مراحل مورد نیاز",
     stepsDone: "انجام‌شده",
     noGoalsInFilter: "هدفی در این بازه‌ی زمانی ثبت نشده است.",
@@ -169,9 +203,9 @@ const i18n = {
     addTop3Btn: "ثبت هدف برتر",
     top3LimitReached: "حداکثر ۳ هدف پایان سال ثبت شده است. برای تغییر، یکی را حذف کنید.",
     noTop3Yet: "هنوز هدفی در ۳ هدف برتر ثبت نشده است.",
-    dataBackupTitle: "پشتیبان‌گیری اطلاعات",
+    dataBackupTitle: "پشتیبان‌گیری",
     exportBtn: "خروجی فایل",
-    resetBtn: "پاک‌سازی اطلاعات",
+    resetBtn: "پاک‌سازی",
     confirmReset: "آیا تمام اطلاعات پاک شود و به صفحه‌ی شروع برگردید؟",
     pageTitles: {
       todo: "لیست کارها",
@@ -194,10 +228,20 @@ const WORKOUT_TYPES = [
   { value: "Rest & Recovery", mins: 0, isStrength: false }
 ];
 
+function todayKey() {
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
 function defaultStepsForHorizon(horizon) {
   if (horizon === "Yearly") return 365;
   if (horizon === "6-Month") return 180;
   if (horizon === "3-Month") return 90;
+  if (horizon === "Monthly") return 30;
+  if (horizon === "Weekly") return 7;
   return 30;
 }
 
@@ -218,14 +262,19 @@ function createInitialState() {
     userName: "",
     lang: "en",
     theme: "noir",
-    // Tab 5: Top 3 End-of-Year Goals (Max 3, manually incremented/decremented only in Tab 5)
+    lastActiveDate: todayKey(),
+    // Tab 5: Top 3 End-of-Year Goals
     top3Goals: [],
     // Tab 4: Goals List & Timeline
     timelineGoals: [],
-    // Tab 1: Goals copied from Tab 4 into To-Do List: [{ id, goalId, title, done }]
+    // Tab 1: Goals copied from Tab 4 into To-Do List (Stay until user removes them)
     todoGoals: [],
-    // Tab 1: Secondary Priority Tasks: [{ id, title, done }]
+    // Tab 1: Secondary Priority Tasks (Completed ones move to secondaryHistory at end of day)
     secondaryTasks: [],
+    // Settings -> History (Archived completed Other Tasks)
+    secondaryHistory: [],
+    // Settings -> Important History (Manually archived finished Important Goals)
+    importantHistory: [],
     // Tab 2: Sleep Settings & Schedule
     sleepSettings: {
       targetHours: 8,
@@ -279,6 +328,8 @@ function loadState() {
 
     merged.todoGoals = Array.isArray(merged.todoGoals) ? merged.todoGoals : [];
     merged.secondaryTasks = Array.isArray(merged.secondaryTasks) ? merged.secondaryTasks : [];
+    merged.secondaryHistory = Array.isArray(merged.secondaryHistory) ? merged.secondaryHistory : [];
+    merged.importantHistory = Array.isArray(merged.importantHistory) ? merged.importantHistory : [];
 
     return merged;
   } catch (_) {
@@ -292,7 +343,52 @@ let currentGoalFilter = "All";
 let editingGoalId = null;
 let editingTop3Id = null;
 
+// End-of-Day Rollover: Completed Secondary Tasks from previous days move to History; unfinished stay for today.
+function processEndOfDayRollover() {
+  const tk = todayKey();
+  let changed = false;
+
+  const remainingForToday = [];
+  state.secondaryTasks.forEach(task => {
+    if (task.done) {
+      // Ensure legacy completed tasks get stamped with lastActiveDate if missing
+      const doneDate = task.completedDate || state.lastActiveDate || tk;
+      if (doneDate < tk) {
+        state.secondaryHistory.push({
+          id: task.id,
+          title: task.title,
+          completedDate: doneDate
+        });
+        changed = true;
+      } else {
+        if (!task.completedDate) {
+          task.completedDate = tk;
+          changed = true;
+        }
+        remainingForToday.push(task);
+      }
+    } else {
+      // Unfinished secondary tasks always carry over to the next day
+      remainingForToday.push(task);
+    }
+  });
+
+  if (changed) {
+    state.secondaryTasks = remainingForToday;
+  }
+  if (state.lastActiveDate !== tk) {
+    state.lastActiveDate = tk;
+    changed = true;
+  }
+  if (changed) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (_) {}
+  }
+}
+
 function saveState() {
+  processEndOfDayRollover();
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   } catch (_) {}
@@ -326,8 +422,14 @@ function calcSleepHours(bedStr, wakeStr) {
 }
 
 function horizonLabel(h) {
-  const map = { "Yearly": "hYearly", "6-Month": "hSixMonth", "3-Month": "hThreeMonth", "Monthly": "hMonthly" };
-  return t(map[h] || "hYearly");
+  const map = {
+    "Weekly": "hWeekly",
+    "Monthly": "hMonthly",
+    "3-Month": "hThreeMonth",
+    "6-Month": "hSixMonth",
+    "Yearly": "hYearly"
+  };
+  return t(map[h] || "hMonthly");
 }
 
 function setPage(name) {
@@ -369,6 +471,24 @@ function copyGoalToTodoList(goalId) {
   showToast(t("copiedToast"));
 }
 
+function moveGoalToImportantHistory(goalId) {
+  const goal = state.timelineGoals.find(g => g.id === goalId);
+  if (!goal) return;
+  const m = getGoalStepMetrics(goal);
+  state.importantHistory.push({
+    id: goal.id,
+    title: goal.title,
+    horizon: goal.horizon,
+    totalSteps: m.total,
+    stepsDone: m.done,
+    completedDate: todayKey()
+  });
+  state.timelineGoals = state.timelineGoals.filter(g => g.id !== goalId);
+  state.todoGoals = state.todoGoals.filter(item => item.goalId !== goalId);
+  saveState();
+  showToast(t("movedToImpHistoryToast"));
+}
+
 function renderAll() {
   // Theme & Language
   document.documentElement.dataset.theme = state.theme;
@@ -406,7 +526,7 @@ function renderAll() {
     });
   }
 
-  // Render Goals in To-Do List (Main Priority)
+  // Render Goals in To-Do List (Main Priority - stay here with their own engine)
   const todoGoalsEl = document.getElementById("todo-goals-list");
   todoGoalsEl.innerHTML = "";
   if (state.todoGoals.length === 0) {
@@ -440,7 +560,7 @@ function renderAll() {
     });
   }
 
-  // Render Secondary Priority Tasks
+  // Render Secondary Priority Tasks (Other Tasks)
   const secListEl = document.getElementById("todo-secondary-list");
   secListEl.innerHTML = "";
   if (state.secondaryTasks.length === 0) {
@@ -579,16 +699,18 @@ function renderAll() {
     filteredGoals.forEach(g => {
       const m = getGoalStepMetrics(g);
       const isEditing = editingGoalId === g.id;
+      const isFinished = m.done >= m.total;
 
       const editPanelHtml = isEditing ? `
         <form class="edit-panel form-stack edit-goal-form" data-gid="${g.id}">
           <div class="form-row">
             <input type="text" class="input-field edit-g-title" value="${escapeHtml(g.title)}" required />
             <select class="input-field edit-g-horizon" style="max-width:155px;">
-              <option value="Yearly" ${g.horizon === "Yearly" ? "selected" : ""}>${t("hYearly")}</option>
-              <option value="6-Month" ${g.horizon === "6-Month" ? "selected" : ""}>${t("hSixMonth")}</option>
-              <option value="3-Month" ${g.horizon === "3-Month" ? "selected" : ""}>${t("hThreeMonth")}</option>
+              <option value="Weekly" ${g.horizon === "Weekly" ? "selected" : ""}>${t("hWeekly")}</option>
               <option value="Monthly" ${g.horizon === "Monthly" ? "selected" : ""}>${t("hMonthly")}</option>
+              <option value="3-Month" ${g.horizon === "3-Month" ? "selected" : ""}>${t("hThreeMonth")}</option>
+              <option value="6-Month" ${g.horizon === "6-Month" ? "selected" : ""}>${t("hSixMonth")}</option>
+              <option value="Yearly" ${g.horizon === "Yearly" ? "selected" : ""}>${t("hYearly")}</option>
             </select>
           </div>
           <div class="form-row">
@@ -614,6 +736,7 @@ function renderAll() {
         <div class="card-header">
           <span class="badge badge-accent">${horizonLabel(g.horizon)}</span>
           <div class="row-actions">
+            ${isFinished ? `<button type="button" class="btn btn-primary btn-xs" data-tlgoal-archive="${g.id}">${t("moveToImportantHistoryBtn")}</button>` : ""}
             <button type="button" class="btn btn-outline btn-xs" data-tlgoal-minus="${g.id}">-1</button>
             <button type="button" class="btn btn-outline btn-xs" data-tlgoal-plus="${g.id}">+1</button>
             <button type="button" class="btn btn-outline btn-xs" data-tlgoal-edit="${g.id}">${t("editBtn")}</button>
@@ -706,9 +829,57 @@ function renderAll() {
       top3CardsEl.appendChild(card);
     });
   }
+
+  // ==================== SETTINGS MODALS: HISTORY & IMPORTANT HISTORY ====================
+  const histEl = document.getElementById("secondary-history-list");
+  histEl.innerHTML = "";
+  if (state.secondaryHistory.length === 0) {
+    histEl.innerHTML = `<div class="empty-text">${t("noHistoryYet")}</div>`;
+  } else {
+    state.secondaryHistory.slice().reverse().forEach(h => {
+      const row = document.createElement("div");
+      row.className = "item-row";
+      row.innerHTML = `
+        <div class="item-body">
+          <span class="item-title done">${escapeHtml(h.title)}</span>
+          <span class="item-sub">${escapeHtml(h.completedDate || "")}</span>
+        </div>
+        <button type="button" class="del-btn" data-hist-del="${h.id}">✕</button>
+      `;
+      histEl.appendChild(row);
+    });
+  }
+
+  const impHistEl = document.getElementById("important-history-list");
+  impHistEl.innerHTML = "";
+  if (state.importantHistory.length === 0) {
+    impHistEl.innerHTML = `<div class="empty-text">${t("noImpHistoryYet")}</div>`;
+  } else {
+    state.importantHistory.slice().reverse().forEach(ih => {
+      const row = document.createElement("div");
+      row.className = "item-row";
+      row.innerHTML = `
+        <div class="item-body">
+          <span class="item-title">★ ${escapeHtml(ih.title)}</span>
+          <span class="item-sub">${horizonLabel(ih.horizon)} · ${ih.stepsDone}/${ih.totalSteps} ${t("stepsWord")} · ${escapeHtml(ih.completedDate || "")}</span>
+        </div>
+        <button type="button" class="del-btn" data-imphist-del="${ih.id}">✕</button>
+      `;
+      impHistEl.appendChild(row);
+    });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Run end-of-day rollover check on startup and whenever app returns to foreground
+  processEndOfDayRollover();
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) {
+      processEndOfDayRollover();
+      renderAll();
+    }
+  });
+
   // Onboarding
   document.getElementById("onboard-lang").addEventListener("change", e => {
     state.lang = e.target.value;
@@ -734,6 +905,60 @@ document.addEventListener("DOMContentLoaded", () => {
     saveState();
   });
 
+  // Top Nut/Gear Settings Modal & History Modals
+  const settingsModal = document.getElementById("settings-modal");
+  const historyModal = document.getElementById("history-modal");
+  const impHistoryModal = document.getElementById("imp-history-modal");
+
+  document.getElementById("open-settings-btn").addEventListener("click", () => {
+    settingsModal.classList.remove("hidden");
+  });
+  document.getElementById("close-settings-btn").addEventListener("click", () => {
+    settingsModal.classList.add("hidden");
+  });
+  settingsModal.addEventListener("click", e => {
+    if (e.target === settingsModal) settingsModal.classList.add("hidden");
+  });
+
+  document.getElementById("open-history-btn").addEventListener("click", () => {
+    settingsModal.classList.add("hidden");
+    historyModal.classList.remove("hidden");
+  });
+  document.getElementById("close-history-btn").addEventListener("click", () => {
+    historyModal.classList.add("hidden");
+  });
+  historyModal.addEventListener("click", e => {
+    if (e.target === historyModal) historyModal.classList.add("hidden");
+  });
+
+  document.getElementById("open-imp-history-btn").addEventListener("click", () => {
+    settingsModal.classList.add("hidden");
+    impHistoryModal.classList.remove("hidden");
+  });
+  document.getElementById("close-imp-history-btn").addEventListener("click", () => {
+    impHistoryModal.classList.add("hidden");
+  });
+  impHistoryModal.addEventListener("click", e => {
+    if (e.target === impHistoryModal) impHistoryModal.classList.add("hidden");
+  });
+
+  // Delete entries from History / Important History
+  document.getElementById("secondary-history-list").addEventListener("click", e => {
+    const del = e.target.closest("[data-hist-del]");
+    if (del) {
+      state.secondaryHistory = state.secondaryHistory.filter(x => x.id !== Number(del.dataset.histDel));
+      saveState();
+    }
+  });
+
+  document.getElementById("important-history-list").addEventListener("click", e => {
+    const del = e.target.closest("[data-imphist-del]");
+    if (del) {
+      state.importantHistory = state.importantHistory.filter(x => x.id !== Number(del.dataset.imphistDel));
+      saveState();
+    }
+  });
+
   // Navigation
   document.querySelectorAll("[data-page]").forEach(btn => {
     btn.addEventListener("click", () => setPage(btn.dataset.page));
@@ -742,7 +967,7 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("click", () => setPage(btn.dataset.goto));
   });
 
-  // Global Language & Theme (inside Top3 Settings Ribbon)
+  // Language & Theme inside Settings Modal
   document.getElementById("global-lang-select").addEventListener("change", e => {
     state.lang = e.target.value;
     saveState();
@@ -816,12 +1041,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Secondary Priority Tasks
+  // Secondary Priority Tasks (Other Tasks)
   document.getElementById("add-secondary-form").addEventListener("submit", e => {
     e.preventDefault();
     const input = document.getElementById("secondary-task-input");
     if (!input.value.trim()) return;
-    state.secondaryTasks.push({ id: Date.now(), title: input.value.trim(), done: false });
+    state.secondaryTasks.push({
+      id: Date.now(),
+      title: input.value.trim(),
+      done: false,
+      completedDate: null
+    });
     input.value = "";
     saveState();
   });
@@ -830,7 +1060,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const box = e.target.closest("[data-sec-toggle]");
     if (box) {
       const task = state.secondaryTasks.find(x => x.id === Number(box.dataset.secToggle));
-      if (task) { task.done = !task.done; saveState(); }
+      if (task) {
+        task.done = !task.done;
+        task.completedDate = task.done ? todayKey() : null;
+        saveState();
+      }
       return;
     }
     const dup = e.target.closest("[data-sec-dup]");
@@ -838,7 +1072,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const idx = state.secondaryTasks.findIndex(x => x.id === Number(dup.dataset.secDup));
       if (idx !== -1) {
         const orig = state.secondaryTasks[idx];
-        state.secondaryTasks.splice(idx + 1, 0, { id: Date.now(), title: orig.title, done: false });
+        state.secondaryTasks.splice(idx + 1, 0, {
+          id: Date.now(),
+          title: orig.title,
+          done: false,
+          completedDate: null
+        });
         saveState();
       }
       return;
@@ -973,6 +1212,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.getElementById("timeline-goals-container").addEventListener("click", e => {
+    const archiveBtn = e.target.closest("[data-tlgoal-archive]");
+    if (archiveBtn) {
+      moveGoalToImportantHistory(Number(archiveBtn.dataset.tlgoalArchive));
+      return;
+    }
+
     const plusBtn = e.target.closest("[data-tlgoal-plus]");
     if (plusBtn) {
       adjustTimelineGoalSteps(Number(plusBtn.dataset.tlgoalPlus), 1);

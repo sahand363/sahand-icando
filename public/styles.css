@@ -17,7 +17,7 @@
   --exer-color: #e5a54b;
   --exer-soft: rgba(229, 165, 75, 0.14);
   --danger: #e06c75;
-  --shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
+  --shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
   --radius: 16px;
   --radius-sm: 10px;
 }
@@ -75,17 +75,44 @@ html, body {
 button, input, select { font: inherit; color: inherit; background: none; border: none; }
 button { cursor: pointer; }
 
-/* Onboarding Overlay */
+/* Modals & Overlays */
+.modal-overlay, .onboarding-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(9, 10, 12, 0.86);
+  backdrop-filter: blur(6px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  overflow-y: auto;
+}
 .onboarding-overlay {
-  position: fixed; inset: 0; background: var(--bg); z-index: 2000;
-  display: flex; align-items: center; justify-content: center; padding: 20px; overflow-y: auto;
+  background: var(--bg);
+  z-index: 2500;
 }
-.onboarding-overlay.hidden { display: none !important; }
-.onboarding-card {
-  width: 100%; max-width: 440px; background: var(--surface);
-  border: 1px solid var(--line); border-radius: 22px; padding: 26px 22px; box-shadow: var(--shadow);
+.modal-overlay.hidden, .onboarding-overlay.hidden {
+  display: none !important;
 }
-.onboarding-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.modal-card, .onboarding-card {
+  width: 100%;
+  max-width: 460px;
+  max-height: 88vh;
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 24px 20px;
+  box-shadow: var(--shadow);
+}
+.onboarding-top, .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
 
 /* App Shell */
 .app-shell { display: flex; width: 100%; min-height: 100vh; }
@@ -118,48 +145,46 @@ button { cursor: pointer; }
 /* Main Area */
 .main-content {
   flex: 1; width: calc(100% - 248px); margin-left: 248px;
-  padding: 28px 36px 96px; max-width: 1180px;
+  padding: 26px 36px 96px; max-width: 1180px;
 }
 [dir="rtl"] .main-content { margin-left: 0; margin-right: 248px; }
 
-/* Topbar */
+/* Topbar with Nut/Gear Settings Button */
 .topbar {
-  display: flex; justify-content: space-between; align-items: flex-start;
-  gap: 12px; margin-bottom: 22px; flex-wrap: wrap;
-}
-.topbar h1 { font-size: 22px; font-weight: 700; margin-top: 2px; }
-.greeting-sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
-
-/* Settings Ribbon in Top3 Tab */
-.settings-ribbon {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 14px 18px;
-  margin-bottom: 16px;
-  box-shadow: var(--shadow);
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  flex-wrap: wrap;
+  margin-bottom: 22px;
 }
-.settings-ribbon-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  font-weight: 700;
+.topbar h1 { font-size: 23px; font-weight: 700; }
+.greeting-sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+.nut-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  transition: 0.2s ease;
+  box-shadow: var(--shadow);
 }
-.settings-ribbon-controls {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
+.nut-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
+.nut-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
 .mini-select {
   background: var(--surface-2); border: 1px solid var(--line);
-  border-radius: 10px; padding: 7px 11px; font-size: 12px; font-weight: 600; color: var(--text); outline: none;
+  border-radius: 10px; padding: 8px 12px; font-size: 12.5px; font-weight: 600; color: var(--text); outline: none;
 }
 
 /* Badges & Buttons */
@@ -183,7 +208,7 @@ button { cursor: pointer; }
 .btn-outline { border: 1px solid var(--line); background: var(--surface-2); color: var(--text); }
 .btn-outline:hover { border-color: var(--accent); }
 .btn-danger { border: 1px solid rgba(224, 108, 117, 0.3); background: rgba(224, 108, 117, 0.12); color: var(--danger); }
-.btn-sm { padding: 6px 10px; font-size: 11px; border-radius: 8px; }
+.btn-sm { padding: 7px 11px; font-size: 11.5px; border-radius: 8px; }
 .btn-xs { padding: 4px 8px; font-size: 10.5px; border-radius: 7px; }
 .btn-big-todo {
   width: 100%;
@@ -263,6 +288,17 @@ button { cursor: pointer; }
 .del-btn { color: var(--muted); padding: 4px 6px; font-size: 12px; flex-shrink: 0; }
 .empty-text { font-size: 12px; color: var(--muted); padding: 14px 0; text-align: center; }
 
+/* Settings Modal Rows */
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+}
+.setting-row:last-child { border-bottom: none; }
+
 /* Edit Drawer inside Card */
 .edit-panel {
   background: var(--surface-2); border: 1px solid var(--line);
@@ -289,7 +325,7 @@ button { cursor: pointer; }
   position: fixed; bottom: 84px; left: 50%; transform: translateX(-50%);
   background: var(--surface-3); color: var(--accent); border: 1px solid var(--accent);
   padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 700;
-  z-index: 1500; box-shadow: var(--shadow); opacity: 0; pointer-events: none; transition: opacity 0.2s;
+  z-index: 3000; box-shadow: var(--shadow); opacity: 0; pointer-events: none; transition: opacity 0.2s;
 }
 .toast-msg.show { opacity: 1; }
 

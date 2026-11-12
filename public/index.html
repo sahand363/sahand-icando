@@ -47,6 +47,85 @@
     </div>
   </div>
 
+  <!-- Settings Modal (Opened from Nut/Gear Button on Top) -->
+  <div class="modal-overlay hidden" id="settings-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="card-title" data-i18n="settingsTitle">Settings</h3>
+        <button type="button" class="btn btn-outline btn-xs" id="close-settings-btn">✕</button>
+      </div>
+
+      <div class="setting-row">
+        <span style="font-size:13.5px; font-weight:600;" data-i18n="langLabel">Language</span>
+        <select id="global-lang-select" class="mini-select" aria-label="Language">
+          <option value="en">English</option>
+          <option value="fa">Persian (فارسی)</option>
+        </select>
+      </div>
+
+      <div class="setting-row">
+        <span style="font-size:13.5px; font-weight:600;" data-i18n="themeLabel">Theme</span>
+        <select id="global-theme-select" class="mini-select" aria-label="Theme">
+          <option value="noir">Noir</option>
+          <option value="dusk">Dusk</option>
+          <option value="daylight">Daylight</option>
+        </select>
+      </div>
+
+      <div class="setting-row">
+        <div>
+          <strong style="font-size:13.5px; display:block;" data-i18n="historyBtnTitle">History</strong>
+          <small style="font-size:11px; color:var(--muted);" data-i18n="historyDesc">Completed daily tasks archived at end of day</small>
+        </div>
+        <button type="button" class="btn btn-outline btn-sm" id="open-history-btn" data-i18n="historyBtn">History</button>
+      </div>
+
+      <div class="setting-row">
+        <div>
+          <strong style="font-size:13.5px; display:block;" data-i18n="impHistoryBtnTitle">Important History</strong>
+          <small style="font-size:11px; color:var(--muted);" data-i18n="impHistoryDesc">Finished important goals archived from Goals tab</small>
+        </div>
+        <button type="button" class="btn btn-primary btn-sm" id="open-imp-history-btn" data-i18n="impHistoryBtn">Important History</button>
+      </div>
+
+      <div class="setting-row">
+        <span style="font-size:13px; font-weight:600;" data-i18n="dataBackupTitle">Data Backup</span>
+        <div style="display:flex; gap:6px;">
+          <button type="button" class="btn btn-outline btn-xs" id="export-json-btn" data-i18n="exportBtn">Export JSON</button>
+          <button type="button" class="btn btn-danger btn-xs" id="reset-app-btn" data-i18n="resetBtn">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Secondary Tasks History Modal -->
+  <div class="modal-overlay hidden" id="history-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3 class="card-title" data-i18n="historyModalTitle">History</h3>
+          <small style="font-size:11px; color:var(--muted);" data-i18n="historyModalSub">Finished tasks moved here at the end of each day</small>
+        </div>
+        <button type="button" class="btn btn-outline btn-xs" id="close-history-btn">✕</button>
+      </div>
+      <div class="item-list" id="secondary-history-list"></div>
+    </div>
+  </div>
+
+  <!-- Important Goals History Modal -->
+  <div class="modal-overlay hidden" id="imp-history-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3 class="card-title" data-i18n="impHistoryModalTitle">Important History</h3>
+          <small style="font-size:11px; color:var(--muted);" data-i18n="impHistoryModalSub">Completed important goals</small>
+        </div>
+        <button type="button" class="btn btn-outline btn-xs" id="close-imp-history-btn">✕</button>
+      </div>
+      <div class="item-list" id="important-history-list"></div>
+    </div>
+  </div>
+
   <!-- Main Shell -->
   <div class="app-shell">
     <!-- Desktop Sidebar -->
@@ -73,10 +152,16 @@
     <main class="main-content">
       <header class="topbar">
         <div>
-          <div class="eyebrow" id="today-date-label">TODAY</div>
           <h1 id="page-title">To-Do List</h1>
           <div class="greeting-sub" id="user-greeting"></div>
         </div>
+        <!-- Nut / Gear Button for Settings -->
+        <button type="button" class="nut-btn" id="open-settings-btn" aria-label="Settings" title="Settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </button>
       </header>
 
       <!-- ==================== TAB 1: TO-DO LIST ==================== -->
@@ -92,7 +177,6 @@
               <button class="btn btn-outline btn-sm" data-goto="goals" data-i18n="manageGoalsBtn">Goals →</button>
             </div>
 
-            <!-- Quick Copy Goal Picker -->
             <form id="quick-copy-goal-form" class="form-row">
               <select id="quick-copy-goal-select" class="input-field"></select>
               <button type="submit" class="btn btn-primary btn-sm" data-i18n="copyToTodoBtn">+ Copy Goal</button>
@@ -228,12 +312,13 @@
             <div class="form-row">
               <input type="text" id="tl-goal-title" class="input-field" data-i18n-placeholder="tlGoalPlaceholder" placeholder="Goal title..." required />
               <select id="tl-goal-horizon" class="input-field" style="max-width:165px;">
-                <option value="Yearly" data-i18n="hYearly">Yearly</option>
-                <option value="6-Month" data-i18n="hSixMonth">6-Month</option>
+                <option value="Weekly" data-i18n="hWeekly">Weekly</option>
+                <option value="Monthly" selected data-i18n="hMonthly">Monthly</option>
                 <option value="3-Month" data-i18n="hThreeMonth">3-Month</option>
-                <option value="Monthly" data-i18n="hMonthly">Monthly</option>
+                <option value="6-Month" data-i18n="hSixMonth">6-Month</option>
+                <option value="Yearly" data-i18n="hYearly">Yearly</option>
               </select>
-              <input type="number" id="tl-goal-steps" class="input-field" style="max-width:140px;" min="1" max="3650" value="365" data-i18n-placeholder="stepsCountPlaceholder" placeholder="Steps required" required />
+              <input type="number" id="tl-goal-steps" class="input-field" style="max-width:140px;" min="1" max="3650" value="30" data-i18n-placeholder="stepsCountPlaceholder" placeholder="Steps required" required />
               <button type="submit" class="btn btn-primary" data-i18n="addGoalBtn">Add Goal</button>
             </div>
           </form>
@@ -241,10 +326,11 @@
 
         <div class="pill-row" id="goal-filter-pills">
           <button class="pill-btn active" data-filter="All" data-i18n="filterAll">All Timelines</button>
-          <button class="pill-btn" data-filter="Yearly" data-i18n="hYearly">Yearly</button>
-          <button class="pill-btn" data-filter="6-Month" data-i18n="hSixMonth">6-Month</button>
-          <button class="pill-btn" data-filter="3-Month" data-i18n="hThreeMonth">3-Month</button>
+          <button class="pill-btn" data-filter="Weekly" data-i18n="hWeekly">Weekly</button>
           <button class="pill-btn" data-filter="Monthly" data-i18n="hMonthly">Monthly</button>
+          <button class="pill-btn" data-filter="3-Month" data-i18n="hThreeMonth">3-Month</button>
+          <button class="pill-btn" data-filter="6-Month" data-i18n="hSixMonth">6-Month</button>
+          <button class="pill-btn" data-filter="Yearly" data-i18n="hYearly">Yearly</button>
         </div>
 
         <div id="timeline-goals-container"></div>
@@ -252,25 +338,6 @@
 
       <!-- ==================== TAB 5: TOP 3 END-OF-YEAR GOALS ==================== -->
       <section class="page" id="page-top3">
-        <!-- Settings Ribbon on Top -->
-        <div class="settings-ribbon">
-          <div class="settings-ribbon-title">
-            <span>⚙</span>
-            <strong data-i18n="settingsRibbonTitle">Settings</strong>
-          </div>
-          <div class="settings-ribbon-controls">
-            <select id="global-lang-select" class="mini-select" aria-label="Language">
-              <option value="en">English</option>
-              <option value="fa">Persian (فارسی)</option>
-            </select>
-            <select id="global-theme-select" class="mini-select" aria-label="Theme">
-              <option value="noir">Noir</option>
-              <option value="dusk">Dusk</option>
-              <option value="daylight">Daylight</option>
-            </select>
-          </div>
-        </div>
-
         <article class="card">
           <div class="card-header">
             <div>
@@ -295,17 +362,6 @@
         </article>
 
         <div class="grid-3" id="top3-cards-container"></div>
-
-        <!-- Backup / Reset Footer Card -->
-        <article class="card">
-          <div class="card-header">
-            <h3 class="card-title" style="font-size:14px;" data-i18n="dataBackupTitle">Data Backup</h3>
-            <div style="display:flex; gap:8px; flex-wrap:wrap;">
-              <button class="btn btn-outline btn-sm" id="export-json-btn" data-i18n="exportBtn">Export JSON</button>
-              <button class="btn btn-danger btn-sm" id="reset-app-btn" data-i18n="resetBtn">Reset Data</button>
-            </div>
-          </div>
-        </article>
       </section>
     </main>
   </div>
