@@ -77,17 +77,6 @@
           <h1 id="page-title">To-Do List</h1>
           <div class="greeting-sub" id="user-greeting"></div>
         </div>
-        <div class="top-controls">
-          <select id="global-lang-select" class="mini-select" aria-label="Language">
-            <option value="en">English</option>
-            <option value="fa">Persian (فارسی)</option>
-          </select>
-          <select id="global-theme-select" class="mini-select" aria-label="Theme">
-            <option value="noir">Noir</option>
-            <option value="dusk">Dusk</option>
-            <option value="daylight">Daylight</option>
-          </select>
-        </div>
       </header>
 
       <!-- ==================== TAB 1: TO-DO LIST ==================== -->
@@ -234,7 +223,7 @@
       <!-- ==================== TAB 4: GOALS LIST & TIMELINE ==================== -->
       <section class="page" id="page-goals">
         <article class="card">
-          <h3 class="card-title" data-i18n="addTimelineGoalTitle">Create Goal with Steps</h3>
+          <h3 class="card-title" data-i18n="addTimelineGoalTitle">Create Goal</h3>
           <form id="add-timeline-goal-form" class="form-stack">
             <div class="form-row">
               <input type="text" id="tl-goal-title" class="input-field" data-i18n-placeholder="tlGoalPlaceholder" placeholder="Goal title..." required />
@@ -263,6 +252,25 @@
 
       <!-- ==================== TAB 5: TOP 3 END-OF-YEAR GOALS ==================== -->
       <section class="page" id="page-top3">
+        <!-- Settings Ribbon on Top -->
+        <div class="settings-ribbon">
+          <div class="settings-ribbon-title">
+            <span>⚙</span>
+            <strong data-i18n="settingsRibbonTitle">Settings</strong>
+          </div>
+          <div class="settings-ribbon-controls">
+            <select id="global-lang-select" class="mini-select" aria-label="Language">
+              <option value="en">English</option>
+              <option value="fa">Persian (فارسی)</option>
+            </select>
+            <select id="global-theme-select" class="mini-select" aria-label="Theme">
+              <option value="noir">Noir</option>
+              <option value="dusk">Dusk</option>
+              <option value="daylight">Daylight</option>
+            </select>
+          </div>
+        </div>
+
         <article class="card">
           <div class="card-header">
             <div>

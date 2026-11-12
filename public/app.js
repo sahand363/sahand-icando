@@ -10,6 +10,7 @@ const i18n = {
     askTopGoalPlaceholder: "Your most important yearly goal...",
     startBtn: "Begin",
     navigationLabel: "NAVIGATION",
+    settingsRibbonTitle: "Settings",
     tab1Nav: "To-Do List",
     tab2Nav: "Sleep Schedule",
     tab3Nav: "Workout Plan",
@@ -26,8 +27,8 @@ const i18n = {
     goalsInTodoTitle: "Goals in To-Do List",
     manageGoalsBtn: "Goals →",
     copyToTodoBtn: "+ Copy Goal",
-    sendToTodoBtn: "→ To-Do",
-    copiedToast: "Copied to To-Do List!",
+    sendToTodoBigBtn: "+ Add to Today's To-Do List",
+    copiedToast: "Added to Today's To-Do List!",
     noGoalsToCopyOption: "Create goals in Goals tab first...",
     secondaryBadge: "SECONDARY PRIORITY",
     secondaryTasksTitle: "Other Tasks (Less Important)",
@@ -38,7 +39,7 @@ const i18n = {
     saveBtn: "Save",
     cancelBtn: "Cancel",
     stepsWord: "steps",
-    noCopiedGoalsTodo: "No goals copied to your To-Do List yet. Copy a goal from the Goals tab or pick one above.",
+    noCopiedGoalsTodo: "No goals in your To-Do List yet. Send a goal from the Goals tab or pick one above.",
     noSecondaryTasks: "No secondary tasks added.",
     sleepSettingsTitle: "Sleep Settings & Targets",
     targetSleepHoursLabel: "TARGET HOURS",
@@ -59,7 +60,7 @@ const i18n = {
     planAdherenceLabel: "WEEKLY SCHEDULE PROGRESS",
     weeklyWorkoutSchedTitle: "Weekly Workout Plan",
     checkToCompleteHint: "CHECK TO MARK COMPLETED",
-    addTimelineGoalTitle: "Add Goal to Timeline",
+    addTimelineGoalTitle: "Create Goal",
     tlGoalPlaceholder: "Goal title...",
     stepsCountPlaceholder: "Steps required",
     addGoalBtn: "Add Goal",
@@ -70,8 +71,6 @@ const i18n = {
     hMonthly: "Monthly",
     stepsRequired: "Steps Required",
     stepsDone: "Completed",
-    stepsRemaining: "Remaining",
-    addStepPlaceholder: "Add named milestone step...",
     noGoalsInFilter: "No goals in this timeline yet.",
     strictLimitBadge: "STRICT LIMIT: MAX 3 GOALS · 365 STEPS",
     top3HeaderTitle: "My Top 3 End-of-Year Goals",
@@ -101,6 +100,7 @@ const i18n = {
     askTopGoalPlaceholder: "اصلی‌ترین هدف شما تا پایان سال چیست؟",
     startBtn: "شروع",
     navigationLabel: "بخش‌های برنامه",
+    settingsRibbonTitle: "تنظیمات",
     tab1Nav: "لیست کارها",
     tab2Nav: "تنظیمات و برنامه‌ی خواب",
     tab3Nav: "برنامه‌ی ورزشی هفتگی",
@@ -114,11 +114,11 @@ const i18n = {
     motto: "هر روز، یک قدم.",
     greetingPrefix: "سلام،",
     mainPriorityBadge: "اولویت اصلی",
-    goalsInTodoTitle: "اهداف کپی‌شده در لیست کارها",
+    goalsInTodoTitle: "اهداف در لیست کارهای امروز",
     manageGoalsBtn: "تب اهداف ←",
     copyToTodoBtn: "+ کپی هدف",
-    sendToTodoBtn: "← لیست کارها",
-    copiedToast: "به لیست کارها کپی شد!",
+    sendToTodoBigBtn: "+ افزودن به لیست کارهای امروز",
+    copiedToast: "به لیست کارهای امروز اضافه شد!",
     noGoalsToCopyOption: "ابتدا در تب اهداف یک هدف بسازید...",
     secondaryBadge: "اولویت فرعی (اهمیت کمتر)",
     secondaryTasksTitle: "سایر کارهای روزمره",
@@ -129,7 +129,7 @@ const i18n = {
     saveBtn: "ذخیره",
     cancelBtn: "انصراف",
     stepsWord: "قدم",
-    noCopiedGoalsTodo: "هنوز هدفی به لیست کارها کپی نشده است. از تب اهداف کپی کنید یا از منوی بالا انتخاب کنید.",
+    noCopiedGoalsTodo: "هنوز هدفی به لیست کارهای امروز اضافه نشده است. از تب اهداف ارسال کنید یا از منوی بالا انتخاب کنید.",
     noSecondaryTasks: "کار فرعی ثبت نشده است.",
     sleepSettingsTitle: "تنظیمات و اهداف خواب",
     targetSleepHoursLabel: "ساعت خواب هدف",
@@ -150,7 +150,7 @@ const i18n = {
     planAdherenceLabel: "پیشرفت برنامه‌ی هفتگی",
     weeklyWorkoutSchedTitle: "برنامه‌ی ورزشی هفتگی",
     checkToCompleteHint: "تیک روزهای انجام‌شده را بزنید",
-    addTimelineGoalTitle: "افزودن هدف به زمان‌بندی",
+    addTimelineGoalTitle: "ایجاد هدف جدید",
     tlGoalPlaceholder: "عنوان هدف...",
     stepsCountPlaceholder: "تعداد کل قدم‌ها",
     addGoalBtn: "افزودن هدف",
@@ -161,8 +161,6 @@ const i18n = {
     hMonthly: "ماهانه",
     stepsRequired: "مراحل مورد نیاز",
     stepsDone: "انجام‌شده",
-    stepsRemaining: "باقی‌مانده",
-    addStepPlaceholder: "افزودن مرحله‌ی نام‌گذاری‌شده...",
     noGoalsInFilter: "هدفی در این بازه‌ی زمانی ثبت نشده است.",
     strictLimitBadge: "حداکثر ۳ هدف · ۳۶۵ قدم",
     top3HeaderTitle: "۳ هدف برتر پایان سال من",
@@ -224,7 +222,7 @@ function createInitialState() {
     top3Goals: [],
     // Tab 4: Goals List & Timeline
     timelineGoals: [],
-    // Tab 1: Goals copied from Tab 4 into To-Do List: [{ id, goalId, stepId, title, done }]
+    // Tab 1: Goals copied from Tab 4 into To-Do List: [{ id, goalId, title, done }]
     todoGoals: [],
     // Tab 1: Secondary Priority Tasks: [{ id, title, done }]
     secondaryTasks: [],
@@ -342,37 +340,29 @@ function setPage(name) {
 }
 
 function getGoalStepMetrics(g) {
-  const namedSteps = g.steps || [];
-  const namedDone = namedSteps.filter(s => s.done).length;
-  const total = Math.max(Number(g.totalSteps || 0), namedSteps.length, 1);
+  const namedDone = (g.steps || []).filter(s => s.done).length;
+  const total = Math.max(1, Number(g.totalSteps || 1));
   const done = Math.max(0, Math.min(total, Number(g.stepsDone || 0) + namedDone));
-  const remaining = Math.max(0, total - done);
   const pctStr = formatPct(done, total);
   const pctNum = Math.min(100, (done / total) * 100);
-  return { total, done, remaining, pctStr, pctNum };
+  return { total, done, pctStr, pctNum };
 }
 
 function adjustTimelineGoalSteps(goalId, delta) {
   const goal = state.timelineGoals.find(g => g.id === goalId);
   if (!goal) return;
-  const namedCount = (goal.steps || []).filter(s => s.done).length;
-  const maxManual = Math.max(0, goal.totalSteps - namedCount);
+  const namedDone = (goal.steps || []).filter(s => s.done).length;
+  const maxManual = Math.max(0, goal.totalSteps - namedDone);
   goal.stepsDone = Math.max(0, Math.min(maxManual, Number(goal.stepsDone || 0) + delta));
 }
 
-function copyGoalToTodoList(goalId, stepId = null) {
+function copyGoalToTodoList(goalId) {
   const goal = state.timelineGoals.find(g => g.id === goalId);
   if (!goal) return;
-  let title = goal.title;
-  if (stepId) {
-    const step = (goal.steps || []).find(s => s.id === stepId);
-    if (step) title = `${goal.title}: ${step.text}`;
-  }
   state.todoGoals.push({
     id: Date.now() + Math.floor(Math.random() * 10000),
     goalId: goal.id,
-    stepId: stepId,
-    title,
+    title: goal.title,
     done: false
   });
   saveState();
@@ -399,7 +389,6 @@ function renderAll() {
   document.getElementById("sidebar-user-name").textContent = state.userName || "";
 
   // ==================== TAB 1: TO-DO LIST ====================
-  // Populate Quick Copy Goal Dropdown
   const quickSelect = document.getElementById("quick-copy-goal-select");
   quickSelect.innerHTML = "";
   if (state.timelineGoals.length === 0) {
@@ -417,7 +406,7 @@ function renderAll() {
     });
   }
 
-  // Render Copied Goals in To-Do List (Main Priority)
+  // Render Goals in To-Do List (Main Priority)
   const todoGoalsEl = document.getElementById("todo-goals-list");
   todoGoalsEl.innerHTML = "";
   if (state.todoGoals.length === 0) {
@@ -426,6 +415,7 @@ function renderAll() {
     state.todoGoals.forEach(item => {
       const linkedGoal = state.timelineGoals.find(g => g.id === item.goalId);
       let subMeta = t("mainPriorityBadge");
+      const displayTitle = linkedGoal ? linkedGoal.title : item.title;
       if (linkedGoal) {
         const m = getGoalStepMetrics(linkedGoal);
         subMeta = `${horizonLabel(linkedGoal.horizon)} · ${m.done}/${m.total} ${t("stepsWord")} (${m.pctStr})`;
@@ -436,7 +426,7 @@ function renderAll() {
       row.innerHTML = `
         <div class="check-box ${item.done ? "done" : ""}" data-tdgoal-toggle="${item.id}">${item.done ? "✓" : ""}</div>
         <div class="item-body">
-          <span class="item-title ${item.done ? "done" : ""}">${escapeHtml(item.title)}</span>
+          <span class="item-title ${item.done ? "done" : ""}">${escapeHtml(displayTitle)}</span>
           <span class="item-sub">${subMeta}</span>
         </div>
         <div class="row-actions">
@@ -590,21 +580,6 @@ function renderAll() {
       const m = getGoalStepMetrics(g);
       const isEditing = editingGoalId === g.id;
 
-      let stepsHtml = "";
-      (g.steps || []).forEach(st => {
-        stepsHtml += `
-          <div class="item-row" style="padding:8px 0;">
-            <div class="check-box ${st.done ? "done" : ""}" data-step-toggle="${g.id}:${st.id}">${st.done ? "✓" : ""}</div>
-            <div class="item-body"><span class="item-title ${st.done ? "done" : ""}">${escapeHtml(st.text)}</span></div>
-            <div class="row-actions">
-              <button type="button" class="btn btn-outline btn-xs" data-step-copytodo="${g.id}:${st.id}">${t("sendToTodoBtn")}</button>
-              <button type="button" class="btn btn-outline btn-xs" data-step-dup="${g.id}:${st.id}" title="${t("duplicateBtn")}">⧉</button>
-              <button type="button" class="del-btn" data-step-del="${g.id}:${st.id}">✕</button>
-            </div>
-          </div>
-        `;
-      });
-
       const editPanelHtml = isEditing ? `
         <form class="edit-panel form-stack edit-goal-form" data-gid="${g.id}">
           <div class="form-row">
@@ -641,7 +616,6 @@ function renderAll() {
           <div class="row-actions">
             <button type="button" class="btn btn-outline btn-xs" data-tlgoal-minus="${g.id}">-1</button>
             <button type="button" class="btn btn-outline btn-xs" data-tlgoal-plus="${g.id}">+1</button>
-            <button type="button" class="btn btn-primary btn-xs" data-tlgoal-copytodo="${g.id}">${t("sendToTodoBtn")}</button>
             <button type="button" class="btn btn-outline btn-xs" data-tlgoal-edit="${g.id}">${t("editBtn")}</button>
             <button type="button" class="del-btn" data-tlgoal-del="${g.id}">✕</button>
           </div>
@@ -655,7 +629,7 @@ function renderAll() {
         </div>
         <div class="progress-track"><div class="progress-fill" style="width:${m.pctNum}%"></div></div>
 
-        <div class="grid-3" style="margin:12px 0;">
+        <div class="grid-2-equal" style="margin:12px 0 4px;">
           <div class="stat-box" style="padding:10px;">
             <span class="eyebrow">${t("stepsRequired")}</span>
             <strong style="font-size:18px;">${m.total}</strong>
@@ -664,23 +638,17 @@ function renderAll() {
             <span class="eyebrow">${t("stepsDone")}</span>
             <strong style="font-size:18px; color:var(--accent);">${m.done}</strong>
           </div>
-          <div class="stat-box" style="padding:10px;">
-            <span class="eyebrow">${t("stepsRemaining")}</span>
-            <strong style="font-size:18px; color:var(--exer-color);">${m.remaining}</strong>
-          </div>
         </div>
 
-        <form class="form-row add-step-form" data-gid="${g.id}">
-          <input type="text" class="input-field step-text-input" placeholder="${t("addStepPlaceholder")}" required />
-          <button type="submit" class="btn btn-outline btn-sm">${t("addBtn")}</button>
-        </form>
-        <div class="item-list">${stepsHtml}</div>
+        <button type="button" class="btn btn-primary btn-big-todo" data-tlgoal-copytodo="${g.id}">
+          ${t("sendToTodoBigBtn")}
+        </button>
       `;
       tlContainer.appendChild(card);
     });
   }
 
-  // ==================== TAB 5: TOP 3 END-OF-YEAR GOALS (MANUAL +1 / -1 ONLY) ====================
+  // ==================== TAB 5: TOP 3 END-OF-YEAR GOALS ====================
   const count = state.top3Goals.length;
   document.getElementById("top3-slots-count").textContent = `${count} / 3`;
   const atLimit = count >= 3;
@@ -774,7 +742,7 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("click", () => setPage(btn.dataset.goto));
   });
 
-  // Global Language & Theme
+  // Global Language & Theme (inside Top3 Settings Ribbon)
   document.getElementById("global-lang-select").addEventListener("change", e => {
     state.lang = e.target.value;
     saveState();
@@ -785,14 +753,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ==================== TAB 1 EVENTS ====================
-  // Quick copy goal from dropdown in Tab 1
   document.getElementById("quick-copy-goal-form").addEventListener("submit", e => {
     e.preventDefault();
     const gid = Number(document.getElementById("quick-copy-goal-select").value);
     if (gid) copyGoalToTodoList(gid);
   });
 
-  // Copied Goals in To-Do List: Check (strikethrough + syncs Goals tab), +1, -1, Duplicate, Delete
   document.getElementById("todo-goals-list").addEventListener("click", e => {
     const toggleBtn = e.target.closest("[data-tdgoal-toggle]");
     if (toggleBtn) {
@@ -801,14 +767,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (item) {
         item.done = !item.done;
         const delta = item.done ? 1 : -1;
-        if (item.stepId) {
-          const goal = state.timelineGoals.find(g => g.id === item.goalId);
-          const step = goal?.steps?.find(s => s.id === item.stepId);
-          if (step) step.done = item.done;
-          else adjustTimelineGoalSteps(item.goalId, delta);
-        } else {
-          adjustTimelineGoalSteps(item.goalId, delta);
-        }
+        adjustTimelineGoalSteps(item.goalId, delta);
         saveState();
       }
       return;
@@ -842,7 +801,6 @@ document.addEventListener("DOMContentLoaded", () => {
         state.todoGoals.splice(idx + 1, 0, {
           id: Date.now() + Math.floor(Math.random() * 10000),
           goalId: orig.goalId,
-          stepId: orig.stepId,
           title: orig.title,
           done: false
         });
@@ -858,7 +816,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Secondary Priority Tasks: Add, Toggle (strikethrough), Duplicate, Delete
+  // Secondary Priority Tasks
   document.getElementById("add-secondary-form").addEventListener("submit", e => {
     e.preventDefault();
     const input = document.getElementById("secondary-task-input");
@@ -1005,24 +963,10 @@ document.addEventListener("DOMContentLoaded", () => {
         goal.horizon = editForm.querySelector(".edit-g-horizon").value;
         goal.totalSteps = Math.max(1, Number(editForm.querySelector(".edit-g-total").value) || goal.totalSteps);
         goal.stepsDone = Math.max(0, Math.min(goal.totalSteps, Number(editForm.querySelector(".edit-g-done").value) || 0));
-        // Update titles of any copied items on To-Do list
         state.todoGoals.forEach(item => {
-          if (item.goalId === gid && !item.stepId) item.title = goal.title;
+          if (item.goalId === gid) item.title = goal.title;
         });
         editingGoalId = null;
-        saveState();
-      }
-      return;
-    }
-
-    const stepForm = e.target.closest(".add-step-form");
-    if (stepForm) {
-      e.preventDefault();
-      const goal = state.timelineGoals.find(g => g.id === Number(stepForm.dataset.gid));
-      const input = stepForm.querySelector(".step-text-input");
-      if (goal && input.value.trim()) {
-        goal.steps = goal.steps || [];
-        goal.steps.push({ id: Date.now(), text: input.value.trim(), done: false });
         saveState();
       }
     }
@@ -1069,52 +1013,6 @@ document.addEventListener("DOMContentLoaded", () => {
       state.timelineGoals = state.timelineGoals.filter(g => g.id !== gid);
       state.todoGoals = state.todoGoals.filter(item => item.goalId !== gid);
       saveState();
-      return;
-    }
-
-    const stToggle = e.target.closest("[data-step-toggle]");
-    if (stToggle) {
-      const [gid, sid] = stToggle.dataset.stepToggle.split(":").map(Number);
-      const goal = state.timelineGoals.find(g => g.id === gid);
-      const step = goal?.steps?.find(s => s.id === sid);
-      if (step) {
-        step.done = !step.done;
-        state.todoGoals.forEach(item => {
-          if (item.goalId === gid && item.stepId === sid) item.done = step.done;
-        });
-        saveState();
-      }
-      return;
-    }
-
-    const stCopy = e.target.closest("[data-step-copytodo]");
-    if (stCopy) {
-      const [gid, sid] = stCopy.dataset.stepCopytodo.split(":").map(Number);
-      copyGoalToTodoList(gid, sid);
-      return;
-    }
-
-    const stDup = e.target.closest("[data-step-dup]");
-    if (stDup) {
-      const [gid, sid] = stDup.dataset.stepDup.split(":").map(Number);
-      const goal = state.timelineGoals.find(g => g.id === gid);
-      const idx = goal?.steps?.findIndex(s => s.id === sid);
-      if (goal && idx !== -1) {
-        const orig = goal.steps[idx];
-        goal.steps.splice(idx + 1, 0, { id: Date.now(), text: orig.text, done: false });
-        saveState();
-      }
-      return;
-    }
-
-    const stDel = e.target.closest("[data-step-del]");
-    if (stDel) {
-      const [gid, sid] = stDel.dataset.stepDel.split(":").map(Number);
-      const goal = state.timelineGoals.find(g => g.id === gid);
-      if (goal?.steps) {
-        goal.steps = goal.steps.filter(s => s.id !== sid);
-        saveState();
-      }
     }
   });
 
