@@ -153,6 +153,7 @@ button { cursor: pointer; }
 }
 .btn-primary { background: var(--accent); color: #fff; }
 .btn-outline { border: 1px solid var(--line); background: var(--surface-2); color: var(--text); }
+.btn-outline:hover { border-color: var(--accent); }
 .btn-danger { border: 1px solid rgba(224, 108, 117, 0.3); background: rgba(224, 108, 117, 0.12); color: var(--danger); }
 .btn-sm { padding: 6px 10px; font-size: 11px; border-radius: 8px; }
 .btn-xs { padding: 4px 8px; font-size: 10.5px; border-radius: 7px; }
@@ -193,23 +194,36 @@ button { cursor: pointer; }
 }
 .input-field:focus { border-color: var(--accent); }
 
-/* Lists */
+/* Lists & Clear Strikethrough on Checked Items */
 .item-list { display: flex; flex-direction: column; margin-top: 6px; }
 .item-row {
   display: flex; align-items: center; gap: 9px; padding: 11px 0;
-  border-bottom: 1px solid var(--line); width: 100%;
+  border-bottom: 1px solid var(--line); width: 100%; flex-wrap: wrap;
 }
 .item-row:last-child { border-bottom: none; }
 .check-box {
   width: 22px; height: 22px; border-radius: 6px; border: 2px solid var(--muted);
   display: grid; place-items: center; cursor: pointer; flex-shrink: 0; font-size: 12px;
+  transition: 0.15s ease;
 }
 .check-box.done { background: var(--accent); border-color: var(--accent); color: #fff; }
-.item-body { flex: 1; min-width: 0; }
-.item-title { font-size: 13.5px; font-weight: 600; word-break: break-word; display: block; }
-.item-title.done { text-decoration: line-through; color: var(--muted); }
+.item-body { flex: 1; min-width: 140px; }
+.item-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  word-break: break-word;
+  display: block;
+  transition: color 0.15s ease;
+}
+.item-title.done {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--accent);
+  color: var(--muted);
+  opacity: 0.72;
+}
 .item-sub { font-size: 11px; color: var(--muted); display: block; margin-top: 2px; }
-.row-actions { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+.row-actions { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; flex-shrink: 0; }
 .del-btn { color: var(--muted); padding: 4px 6px; font-size: 12px; flex-shrink: 0; }
 .empty-text { font-size: 12px; color: var(--muted); padding: 14px 0; text-align: center; }
 
@@ -233,6 +247,15 @@ button { cursor: pointer; }
   background: var(--surface-2); border: 1px solid var(--line); color: var(--muted); white-space: nowrap;
 }
 .pill-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* Toast Feedback */
+.toast-msg {
+  position: fixed; bottom: 84px; left: 50%; transform: translateX(-50%);
+  background: var(--surface-3); color: var(--accent); border: 1px solid var(--accent);
+  padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 700;
+  z-index: 1500; box-shadow: var(--shadow); opacity: 0; pointer-events: none; transition: opacity 0.2s;
+}
+.toast-msg.show { opacity: 1; }
 
 /* Pages */
 .page { display: none; width: 100%; }

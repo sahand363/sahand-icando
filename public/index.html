@@ -13,6 +13,9 @@
 </head>
 <body>
 
+  <!-- Toast Notification -->
+  <div id="toast-msg" class="toast-msg"></div>
+
   <!-- First-Time Onboarding Modal -->
   <div class="onboarding-overlay" id="onboarding-modal">
     <div class="onboarding-card">
@@ -28,7 +31,7 @@
       </div>
       <h2 style="font-size:20px; margin-bottom:6px;" data-i18n="welcomeTitle">Welcome to I CanDo</h2>
       <p style="font-size:12.5px; color:var(--muted); margin-bottom:16px;" data-i18n="welcomeSub">
-        Enter your name and your #1 End-of-Year Goal (365 daily steps) to build your daily schedule.
+        Enter your name and your #1 End-of-Year Goal to get started.
       </p>
       <form id="onboarding-form" class="form-stack">
         <div>
@@ -38,10 +41,6 @@
         <div style="margin-top:6px;">
           <label class="eyebrow" data-i18n="askTopGoalLabel">#1 END-OF-YEAR GOAL (365 STEPS)</label>
           <input type="text" id="onboard-top-goal" class="input-field" style="margin-top:6px;" data-i18n-placeholder="askTopGoalPlaceholder" placeholder="Your most important yearly goal..." required />
-        </div>
-        <div style="margin-top:6px;">
-          <label class="eyebrow" data-i18n="askDailyStepLabel">DAILY ACTION FOR THIS GOAL</label>
-          <input type="text" id="onboard-daily-step" class="input-field" style="margin-top:6px;" data-i18n-placeholder="askDailyStepPlaceholder" placeholder="What must you do every day for this goal?" required />
         </div>
         <button type="submit" class="btn btn-primary" style="margin-top:12px; width:100%;" data-i18n="startBtn">Start</button>
       </form>
@@ -93,35 +92,27 @@
 
       <!-- ==================== TAB 1: TO-DO LIST ==================== -->
       <section class="page active" id="page-todo">
-        <!-- 1. Top 3 End-of-Year Goals Daily Actions (365 Steps) -->
-        <article class="card card-primary-goal">
-          <div class="card-header">
-            <div>
-              <span class="badge badge-accent" data-i18n="mandatoryBadge">TOP 3 END-OF-YEAR GOALS (365 STEPS)</span>
-              <h3 class="card-title" style="margin-top:6px;" data-i18n="top3DailyTitle">Mandatory Daily Actions</h3>
-            </div>
-            <span class="eyebrow" id="top3-daily-counter">0 / 0</span>
-          </div>
-          <p style="font-size:12px; color:var(--muted); margin-bottom:8px;" data-i18n="top3DailySub">
-            Check to complete 1 of 365 steps. Use Duplicate if you work on a goal twice today to count 2 steps.
-          </p>
-          <div class="item-list" id="todo-top3-list"></div>
-        </article>
-
         <div class="grid-2">
-          <!-- 2. Active Goals from Tab 4 (Main Priority) -->
+          <!-- 1. Main Priority: Goals Copied from Tab 4 -->
           <article class="card card-primary-goal">
             <div class="card-header">
               <div>
                 <span class="badge badge-accent" data-i18n="mainPriorityBadge">MAIN PRIORITY</span>
-                <h3 class="card-title" style="margin-top:6px;" data-i18n="goalsInTodoTitle">Goals List</h3>
+                <h3 class="card-title" style="margin-top:6px;" data-i18n="goalsInTodoTitle">Goals in To-Do List</h3>
               </div>
               <button class="btn btn-outline btn-sm" data-goto="goals" data-i18n="manageGoalsBtn">Goals →</button>
             </div>
+
+            <!-- Quick Copy Goal Picker -->
+            <form id="quick-copy-goal-form" class="form-row">
+              <select id="quick-copy-goal-select" class="input-field"></select>
+              <button type="submit" class="btn btn-primary btn-sm" data-i18n="copyToTodoBtn">+ Copy Goal</button>
+            </form>
+
             <div class="item-list" id="todo-goals-list"></div>
           </article>
 
-          <!-- 3. Secondary Priority Tasks -->
+          <!-- 2. Secondary Priority Tasks -->
           <article class="card card-secondary-box">
             <div class="card-header">
               <div>
@@ -281,13 +272,12 @@
             <strong style="font-size:15px; color:var(--accent);" id="top3-slots-count">0 / 3</strong>
           </div>
           <p style="font-size:12.5px; color:var(--muted); margin-bottom:12px;" data-i18n="top3Explain">
-            You can never have more than three End-of-Year Goals. Each goal has 365 daily steps and shows your percentage progress as you check or duplicate its daily task in the To-Do List.
+            You can never have more than three End-of-Year Goals. When you feel you did well today, manually click +1 to advance a goal (or -1 to adjust).
           </p>
 
           <form id="add-top3-form" class="form-stack">
             <div class="form-row">
               <input type="text" id="top3-goal-input" class="input-field" data-i18n-placeholder="top3GoalPlaceholder" placeholder="End-of-Year Goal title..." required />
-              <input type="text" id="top3-daily-input" class="input-field" data-i18n-placeholder="top3DailyPlaceholder" placeholder="Mandatory daily action for this goal..." required />
               <button type="submit" class="btn btn-primary" id="top3-add-btn" data-i18n="addTop3Btn">Add Top Goal</button>
             </div>
           </form>

@@ -3,13 +3,11 @@ const STORAGE_KEY = "sahand_icando_v3_rebuilt";
 const i18n = {
   en: {
     welcomeTitle: "Welcome to I CanDo",
-    welcomeSub: "Enter your name and your #1 End-of-Year Goal (365 daily steps) to build your daily schedule.",
+    welcomeSub: "Enter your name and your #1 End-of-Year Goal to get started.",
     askNameLabel: "YOUR NAME",
     askNamePlaceholder: "Your name...",
     askTopGoalLabel: "#1 END-OF-YEAR GOAL (365 STEPS)",
     askTopGoalPlaceholder: "Your most important yearly goal...",
-    askDailyStepLabel: "MANDATORY DAILY TASK FOR THIS GOAL",
-    askDailyStepPlaceholder: "What must you do every day for this goal?",
     startBtn: "Begin",
     navigationLabel: "NAVIGATION",
     tab1Nav: "To-Do List",
@@ -24,12 +22,13 @@ const i18n = {
     tab5Short: "Top 3",
     motto: "One day at a time.",
     greetingPrefix: "Hello,",
-    mandatoryBadge: "TOP 3 END-OF-YEAR GOALS (365 STEPS)",
-    top3DailyTitle: "Mandatory Daily Actions",
-    top3DailySub: "Check to complete 1 of 365 steps. Use Duplicate if you work on a goal twice today to count 2 steps.",
     mainPriorityBadge: "MAIN PRIORITY",
-    goalsInTodoTitle: "Goals List",
+    goalsInTodoTitle: "Goals in To-Do List",
     manageGoalsBtn: "Goals →",
+    copyToTodoBtn: "+ Copy Goal",
+    sendToTodoBtn: "→ To-Do",
+    copiedToast: "Copied to To-Do List!",
+    noGoalsToCopyOption: "Create goals in Goals tab first...",
     secondaryBadge: "SECONDARY PRIORITY",
     secondaryTasksTitle: "Other Tasks (Less Important)",
     secondaryPlaceholder: "Add secondary priority task...",
@@ -38,10 +37,8 @@ const i18n = {
     editBtn: "Edit",
     saveBtn: "Save",
     cancelBtn: "Cancel",
-    checkStepBtn: "+1 Step",
     stepsWord: "steps",
-    noTop3Daily: "No Top 3 Goals set yet. Add them in the Top 3 tab.",
-    noActiveGoalsTodo: "No active goals in your Goals List yet.",
+    noCopiedGoalsTodo: "No goals copied to your To-Do List yet. Copy a goal from the Goals tab or pick one above.",
     noSecondaryTasks: "No secondary tasks added.",
     sleepSettingsTitle: "Sleep Settings & Targets",
     targetSleepHoursLabel: "TARGET HOURS",
@@ -77,13 +74,12 @@ const i18n = {
     addStepPlaceholder: "Add named milestone step...",
     noGoalsInFilter: "No goals in this timeline yet.",
     strictLimitBadge: "STRICT LIMIT: MAX 3 GOALS · 365 STEPS",
-    top3HeaderTitle: "Top 3 End-of-Year Goals",
-    top3Explain: "You can never have more than three End-of-Year Goals. Each goal has 365 daily steps and shows your percentage progress as you check or duplicate its daily task in the To-Do List.",
-    top3GoalPlaceholder: "End-of-Year Goal...",
-    top3DailyPlaceholder: "Daily task required every day...",
-    addTop3Btn: "Add Goal",
-    top3LimitReached: "Maximum of 3 End-of-Year Goals reached. Remove one to replace it.",
-    dailyTaskLabel: "Daily Task:",
+    top3HeaderTitle: "My Top 3 End-of-Year Goals",
+    top3Explain: "You can never have more than three End-of-Year Goals. When you feel you did well today, manually click +1 to advance a goal (or -1 to adjust).",
+    top3GoalPlaceholder: "End-of-Year Goal title...",
+    addTop3Btn: "Add Top Goal",
+    top3LimitReached: "Maximum of 3 End-of-Year Goals reached. Remove one before adding another.",
+    noTop3Yet: "No Top 3 End-of-Year Goals added yet.",
     dataBackupTitle: "Data Backup",
     exportBtn: "Export JSON",
     resetBtn: "Reset Data",
@@ -98,13 +94,11 @@ const i18n = {
   },
   fa: {
     welcomeTitle: "به I CanDo خوش آمدید",
-    welcomeSub: "نام خود و اولین هدف مهم پایان سال (۳۶۵ قدم روزانه) را وارد کنید تا برنامه‌ی روزانه‌ی شما ساخته شود.",
+    welcomeSub: "نام خود و اولین هدف مهم پایان سال را وارد کنید تا شروع کنیم.",
     askNameLabel: "نام شما",
     askNamePlaceholder: "نام خود را بنویسید...",
     askTopGoalLabel: "مهم‌ترین هدف پایان سال (۳۶۵ قدم)",
     askTopGoalPlaceholder: "اصلی‌ترین هدف شما تا پایان سال چیست؟",
-    askDailyStepLabel: "کار روزانه‌ی مرتبط با این هدف",
-    askDailyStepPlaceholder: "هر روز چه کاری برای این هدف انجام می‌دهید؟",
     startBtn: "شروع",
     navigationLabel: "بخش‌های برنامه",
     tab1Nav: "لیست کارها",
@@ -119,12 +113,13 @@ const i18n = {
     tab5Short: "۳ هدف برتر",
     motto: "هر روز، یک قدم.",
     greetingPrefix: "سلام،",
-    mandatoryBadge: "۳ هدف برتر پایان سال (۳۶۵ قدم)",
-    top3DailyTitle: "اقدامات روزانه‌ی الزامی",
-    top3DailySub: "با تیک زدن هر مورد، ۱ قدم از ۳۶۵ قدم ثبت می‌شود. اگر امروز دو بار روی هدفی کار کردید، دکمه‌ی تکرار را بزنید تا ۲ قدم ثبت شود.",
     mainPriorityBadge: "اولویت اصلی",
-    goalsInTodoTitle: "لیست اهداف",
-    manageGoalsBtn: "مدیریت اهداف ←",
+    goalsInTodoTitle: "اهداف کپی‌شده در لیست کارها",
+    manageGoalsBtn: "تب اهداف ←",
+    copyToTodoBtn: "+ کپی هدف",
+    sendToTodoBtn: "← لیست کارها",
+    copiedToast: "به لیست کارها کپی شد!",
+    noGoalsToCopyOption: "ابتدا در تب اهداف یک هدف بسازید...",
     secondaryBadge: "اولویت فرعی (اهمیت کمتر)",
     secondaryTasksTitle: "سایر کارهای روزمره",
     secondaryPlaceholder: "افزودن کار با اولویت فرعی...",
@@ -133,10 +128,8 @@ const i18n = {
     editBtn: "ویرایش",
     saveBtn: "ذخیره",
     cancelBtn: "انصراف",
-    checkStepBtn: "+۱ قدم",
     stepsWord: "قدم",
-    noTop3Daily: "هنوز ۳ هدف برتر ثبت نشده است. از تب ۳ هدف برتر اضافه کنید.",
-    noActiveGoalsTodo: "هنوز هدفی در لیست اهداف ثبت نشده است.",
+    noCopiedGoalsTodo: "هنوز هدفی به لیست کارها کپی نشده است. از تب اهداف کپی کنید یا از منوی بالا انتخاب کنید.",
     noSecondaryTasks: "کار فرعی ثبت نشده است.",
     sleepSettingsTitle: "تنظیمات و اهداف خواب",
     targetSleepHoursLabel: "ساعت خواب هدف",
@@ -173,12 +166,11 @@ const i18n = {
     noGoalsInFilter: "هدفی در این بازه‌ی زمانی ثبت نشده است.",
     strictLimitBadge: "حداکثر ۳ هدف · ۳۶۵ قدم",
     top3HeaderTitle: "۳ هدف برتر پایان سال من",
-    top3Explain: "شما هرگز نمی‌توانید بیشتر از ۳ هدف پایان سال داشته باشید. هر هدف شامل ۳۶۵ قدم روزانه است و با انجام یا تکرار آن در لیست کارها، درصد پیشرفت افزایش می‌یابد.",
+    top3Explain: "شما هرگز نمی‌توانید بیشتر از ۳ هدف پایان سال داشته باشید. هر روز که احساس کردید عملکرد خوبی داشتید به‌صورت دستی +1 بزنید (یا برای اصلاح -1 بزنید).",
     top3GoalPlaceholder: "عنوان هدف پایان سال...",
-    top3DailyPlaceholder: "کار روزانه‌ی الزامی برای این هدف...",
     addTop3Btn: "ثبت هدف برتر",
     top3LimitReached: "حداکثر ۳ هدف پایان سال ثبت شده است. برای تغییر، یکی را حذف کنید.",
-    dailyTaskLabel: "کار روزانه:",
+    noTop3Yet: "هنوز هدفی در ۳ هدف برتر ثبت نشده است.",
     dataBackupTitle: "پشتیبان‌گیری اطلاعات",
     exportBtn: "خروجی فایل",
     resetBtn: "پاک‌سازی اطلاعات",
@@ -211,10 +203,6 @@ function defaultStepsForHorizon(horizon) {
   return 30;
 }
 
-function todayKey() {
-  return new Date().toISOString().slice(0, 10);
-}
-
 function formatPct(done, total) {
   if (!total || done <= 0) return "0%";
   if (done >= total) return "100%";
@@ -232,13 +220,13 @@ function createInitialState() {
     userName: "",
     lang: "en",
     theme: "noir",
-    // Tab 5: Top 3 End-of-Year Goals (365 steps each)
+    // Tab 5: Top 3 End-of-Year Goals (Max 3, manually incremented/decremented only in Tab 5)
     top3Goals: [],
-    // Daily task instances per date: { "YYYY-MM-DD": [{ instanceId, goalId, done }] }
-    top3DailyInstances: {},
     // Tab 4: Goals List & Timeline
     timelineGoals: [],
-    // Tab 1: Secondary Priority Tasks
+    // Tab 1: Goals copied from Tab 4 into To-Do List: [{ id, goalId, stepId, title, done }]
+    todoGoals: [],
+    // Tab 1: Secondary Priority Tasks: [{ id, title, done }]
     secondaryTasks: [],
     // Tab 2: Sleep Settings & Schedule
     sleepSettings: {
@@ -278,20 +266,21 @@ function loadState() {
       weeklyWorkouts: { ...base.weeklyWorkouts, ...(parsed.weeklyWorkouts || {}) }
     };
 
-    // Normalize Top 3 Goals for 365 steps
-    merged.top3Goals = (merged.top3Goals || []).map(g => ({
+    merged.top3Goals = (merged.top3Goals || []).slice(0, 3).map(g => ({
       ...g,
       stepsDone: Number(g.stepsDone || 0),
       totalSteps: 365
     }));
 
-    // Normalize Timeline Goals for editable steps & counts
     merged.timelineGoals = (merged.timelineGoals || []).map(g => ({
       ...g,
       totalSteps: Number(g.totalSteps || defaultStepsForHorizon(g.horizon)),
       stepsDone: Number(g.stepsDone || 0),
       steps: Array.isArray(g.steps) ? g.steps : []
     }));
+
+    merged.todoGoals = Array.isArray(merged.todoGoals) ? merged.todoGoals : [];
+    merged.secondaryTasks = Array.isArray(merged.secondaryTasks) ? merged.secondaryTasks : [];
 
     return merged;
   } catch (_) {
@@ -303,12 +292,21 @@ let state = loadState();
 let currentPage = "todo";
 let currentGoalFilter = "All";
 let editingGoalId = null;
+let editingTop3Id = null;
 
 function saveState() {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   } catch (_) {}
   renderAll();
+}
+
+function showToast(text) {
+  const el = document.getElementById("toast-msg");
+  if (!el) return;
+  el.textContent = text;
+  el.classList.add("show");
+  setTimeout(() => el.classList.remove("show"), 1800);
 }
 
 function t(key) {
@@ -343,45 +341,45 @@ function setPage(name) {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-// Ensures every Top 3 Goal has at least 1 mandatory task instance on today's To-Do list
-function ensureTodayTop3Instances() {
-  const tk = todayKey();
-  state.top3DailyInstances = state.top3DailyInstances || {};
-  let list = state.top3DailyInstances[tk] || [];
-
-  // Remove instances whose goal no longer exists
-  const validIds = new Set(state.top3Goals.map(g => g.id));
-  list = list.filter(inst => validIds.has(inst.goalId));
-
-  // Ensure each Top 3 goal has at least 1 daily instance today
-  state.top3Goals.forEach((g, idx) => {
-    if (!list.some(inst => inst.goalId === g.id)) {
-      list.push({
-        instanceId: Date.now() + idx + Math.floor(Math.random() * 10000),
-        goalId: g.id,
-        done: false
-      });
-    }
-  });
-
-  state.top3DailyInstances[tk] = list;
-  return list;
-}
-
 function getGoalStepMetrics(g) {
   const namedSteps = g.steps || [];
   const namedDone = namedSteps.filter(s => s.done).length;
   const total = Math.max(Number(g.totalSteps || 0), namedSteps.length, 1);
-  const done = Math.min(total, Number(g.stepsDone || 0) + namedDone);
+  const done = Math.max(0, Math.min(total, Number(g.stepsDone || 0) + namedDone));
   const remaining = Math.max(0, total - done);
   const pctStr = formatPct(done, total);
   const pctNum = Math.min(100, (done / total) * 100);
   return { total, done, remaining, pctStr, pctNum };
 }
 
-function renderAll() {
-  const tk = todayKey();
+function adjustTimelineGoalSteps(goalId, delta) {
+  const goal = state.timelineGoals.find(g => g.id === goalId);
+  if (!goal) return;
+  const namedCount = (goal.steps || []).filter(s => s.done).length;
+  const maxManual = Math.max(0, goal.totalSteps - namedCount);
+  goal.stepsDone = Math.max(0, Math.min(maxManual, Number(goal.stepsDone || 0) + delta));
+}
 
+function copyGoalToTodoList(goalId, stepId = null) {
+  const goal = state.timelineGoals.find(g => g.id === goalId);
+  if (!goal) return;
+  let title = goal.title;
+  if (stepId) {
+    const step = (goal.steps || []).find(s => s.id === stepId);
+    if (step) title = `${goal.title}: ${step.text}`;
+  }
+  state.todoGoals.push({
+    id: Date.now() + Math.floor(Math.random() * 10000),
+    goalId: goal.id,
+    stepId: stepId,
+    title,
+    done: false
+  });
+  saveState();
+  showToast(t("copiedToast"));
+}
+
+function renderAll() {
   // Theme & Language
   document.documentElement.dataset.theme = state.theme;
   document.documentElement.lang = state.lang;
@@ -401,72 +399,58 @@ function renderAll() {
   document.getElementById("sidebar-user-name").textContent = state.userName || "";
 
   // ==================== TAB 1: TO-DO LIST ====================
-  const todayInstances = ensureTodayTop3Instances();
-  const top3ListEl = document.getElementById("todo-top3-list");
-  top3ListEl.innerHTML = "";
-  let top3DoneToday = 0;
-
-  if (state.top3Goals.length === 0) {
-    top3ListEl.innerHTML = `<div class="empty-text">${t("noTop3Daily")}</div>`;
+  // Populate Quick Copy Goal Dropdown
+  const quickSelect = document.getElementById("quick-copy-goal-select");
+  quickSelect.innerHTML = "";
+  if (state.timelineGoals.length === 0) {
+    const opt = document.createElement("option");
+    opt.value = "";
+    opt.textContent = t("noGoalsToCopyOption");
+    quickSelect.appendChild(opt);
   } else {
-    todayInstances.forEach(inst => {
-      const goal = state.top3Goals.find(g => g.id === inst.goalId);
-      if (!goal) return;
-      if (inst.done) top3DoneToday++;
-      const sameGoalCount = todayInstances.filter(x => x.goalId === goal.id).length;
-      const pctStr = formatPct(goal.stepsDone, 365);
-
-      const row = document.createElement("div");
-      row.className = "item-row";
-      row.innerHTML = `
-        <div class="check-box ${inst.done ? "done" : ""}" data-inst-toggle="${inst.instanceId}">${inst.done ? "✓" : ""}</div>
-        <div class="item-body">
-          <span class="item-title ${inst.done ? "done" : ""}">${escapeHtml(goal.dailyTask)}</span>
-          <span class="item-sub">★ ${escapeHtml(goal.title)} · <strong>${goal.stepsDone} / 365 ${t("stepsWord")} (${pctStr})</strong></span>
-        </div>
-        <div class="row-actions">
-          <button type="button" class="btn btn-outline btn-xs" data-inst-dup="${inst.instanceId}" title="${t("duplicateBtn")}">⧉ ${t("duplicateBtn")}</button>
-          ${sameGoalCount > 1 ? `<button type="button" class="del-btn" data-inst-del="${inst.instanceId}">✕</button>` : ""}
-        </div>
-      `;
-      top3ListEl.appendChild(row);
+    state.timelineGoals.forEach(g => {
+      const m = getGoalStepMetrics(g);
+      const opt = document.createElement("option");
+      opt.value = g.id;
+      opt.textContent = `${g.title} (${m.done}/${m.total} · ${m.pctStr})`;
+      quickSelect.appendChild(opt);
     });
   }
-  document.getElementById("top3-daily-counter").textContent = `${top3DoneToday} / ${todayInstances.length}`;
 
-  // 1B. Goals List Incorporated into To-Do List (Main Priority)
+  // Render Copied Goals in To-Do List (Main Priority)
   const todoGoalsEl = document.getElementById("todo-goals-list");
   todoGoalsEl.innerHTML = "";
-  const activeGoals = state.timelineGoals.filter(g => {
-    const m = getGoalStepMetrics(g);
-    return m.remaining > 0;
-  });
-
-  if (activeGoals.length === 0) {
-    todoGoalsEl.innerHTML = `<div class="empty-text">${t("noActiveGoalsTodo")}</div>`;
+  if (state.todoGoals.length === 0) {
+    todoGoalsEl.innerHTML = `<div class="empty-text">${t("noCopiedGoalsTodo")}</div>`;
   } else {
-    activeGoals.forEach(g => {
-      const m = getGoalStepMetrics(g);
-      const nextNamedStep = (g.steps || []).find(s => !s.done);
-      const displayTitle = nextNamedStep ? nextNamedStep.text : g.title;
+    state.todoGoals.forEach(item => {
+      const linkedGoal = state.timelineGoals.find(g => g.id === item.goalId);
+      let subMeta = t("mainPriorityBadge");
+      if (linkedGoal) {
+        const m = getGoalStepMetrics(linkedGoal);
+        subMeta = `${horizonLabel(linkedGoal.horizon)} · ${m.done}/${m.total} ${t("stepsWord")} (${m.pctStr})`;
+      }
 
       const row = document.createElement("div");
       row.className = "item-row";
       row.innerHTML = `
-        <div class="check-box" data-todogoal-step="${g.id}"></div>
+        <div class="check-box ${item.done ? "done" : ""}" data-tdgoal-toggle="${item.id}">${item.done ? "✓" : ""}</div>
         <div class="item-body">
-          <span class="item-title">${escapeHtml(displayTitle)}</span>
-          <span class="item-sub">${horizonLabel(g.horizon)} · ${escapeHtml(g.title)} (${m.done}/${m.total} · ${m.pctStr})</span>
+          <span class="item-title ${item.done ? "done" : ""}">${escapeHtml(item.title)}</span>
+          <span class="item-sub">${subMeta}</span>
         </div>
         <div class="row-actions">
-          <button type="button" class="btn btn-outline btn-xs" data-todogoal-dup="${g.id}" title="${t("duplicateBtn")}">⧉ +1</button>
+          ${linkedGoal ? `<button type="button" class="btn btn-outline btn-xs" data-tdgoal-minus="${item.id}">-1</button>` : ""}
+          ${linkedGoal ? `<button type="button" class="btn btn-outline btn-xs" data-tdgoal-plus="${item.id}">+1</button>` : ""}
+          <button type="button" class="btn btn-outline btn-xs" data-tdgoal-dup="${item.id}" title="${t("duplicateBtn")}">⧉</button>
+          <button type="button" class="del-btn" data-tdgoal-del="${item.id}">✕</button>
         </div>
       `;
       todoGoalsEl.appendChild(row);
     });
   }
 
-  // 1C. Secondary Priority Tasks
+  // Render Secondary Priority Tasks
   const secListEl = document.getElementById("todo-secondary-list");
   secListEl.innerHTML = "";
   if (state.secondaryTasks.length === 0) {
@@ -482,7 +466,7 @@ function renderAll() {
           <span class="item-sub">${t("secondaryBadge")}</span>
         </div>
         <div class="row-actions">
-          <button type="button" class="btn btn-outline btn-xs" data-sec-dup="${task.id}">⧉</button>
+          <button type="button" class="btn btn-outline btn-xs" data-sec-dup="${task.id}" title="${t("duplicateBtn")}">⧉</button>
           <button type="button" class="del-btn" data-sec-del="${task.id}">✕</button>
         </div>
       `;
@@ -613,6 +597,7 @@ function renderAll() {
             <div class="check-box ${st.done ? "done" : ""}" data-step-toggle="${g.id}:${st.id}">${st.done ? "✓" : ""}</div>
             <div class="item-body"><span class="item-title ${st.done ? "done" : ""}">${escapeHtml(st.text)}</span></div>
             <div class="row-actions">
+              <button type="button" class="btn btn-outline btn-xs" data-step-copytodo="${g.id}:${st.id}">${t("sendToTodoBtn")}</button>
               <button type="button" class="btn btn-outline btn-xs" data-step-dup="${g.id}:${st.id}" title="${t("duplicateBtn")}">⧉</button>
               <button type="button" class="del-btn" data-step-del="${g.id}:${st.id}">✕</button>
             </div>
@@ -654,8 +639,9 @@ function renderAll() {
         <div class="card-header">
           <span class="badge badge-accent">${horizonLabel(g.horizon)}</span>
           <div class="row-actions">
-            <button type="button" class="btn btn-outline btn-xs" data-tlgoal-step1="${g.id}">${t("checkStepBtn")}</button>
-            <button type="button" class="btn btn-outline btn-xs" data-tlgoal-dup="${g.id}">⧉ ${t("duplicateBtn")}</button>
+            <button type="button" class="btn btn-outline btn-xs" data-tlgoal-minus="${g.id}">-1</button>
+            <button type="button" class="btn btn-outline btn-xs" data-tlgoal-plus="${g.id}">+1</button>
+            <button type="button" class="btn btn-primary btn-xs" data-tlgoal-copytodo="${g.id}">${t("sendToTodoBtn")}</button>
             <button type="button" class="btn btn-outline btn-xs" data-tlgoal-edit="${g.id}">${t("editBtn")}</button>
             <button type="button" class="del-btn" data-tlgoal-del="${g.id}">✕</button>
           </div>
@@ -694,42 +680,64 @@ function renderAll() {
     });
   }
 
-  // ==================== TAB 5: TOP 3 END-OF-YEAR GOALS (365 STEPS) ====================
+  // ==================== TAB 5: TOP 3 END-OF-YEAR GOALS (MANUAL +1 / -1 ONLY) ====================
   const count = state.top3Goals.length;
   document.getElementById("top3-slots-count").textContent = `${count} / 3`;
   const atLimit = count >= 3;
   document.getElementById("top3-add-btn").disabled = atLimit;
   document.getElementById("top3-goal-input").disabled = atLimit;
-  document.getElementById("top3-daily-input").disabled = atLimit;
   document.getElementById("top3-limit-msg").style.display = atLimit ? "block" : "none";
 
   const top3CardsEl = document.getElementById("top3-cards-container");
   top3CardsEl.innerHTML = "";
-  state.top3Goals.forEach((g, idx) => {
-    const done = Number(g.stepsDone || 0);
-    const pctStr = formatPct(done, 365);
-    const pctNum = Math.min(100, (done / 365) * 100);
+  if (state.top3Goals.length === 0) {
+    top3CardsEl.innerHTML = `<div class="card empty-text" style="grid-column:1/-1;">${t("noTop3Yet")}</div>`;
+  } else {
+    state.top3Goals.forEach((g, idx) => {
+      const done = Math.max(0, Math.min(365, Number(g.stepsDone || 0)));
+      const pctStr = formatPct(done, 365);
+      const pctNum = Math.min(100, (done / 365) * 100);
+      const isEditing = editingTop3Id === g.id;
 
-    const card = document.createElement("article");
-    card.className = "card card-primary-goal";
-    card.innerHTML = `
-      <div class="card-header">
-        <span class="badge badge-accent">#${idx + 1} · ${pctStr}</span>
-        <button class="del-btn" data-top3-del="${g.id}">✕</button>
-      </div>
-      <h4 class="card-title" style="margin-bottom:6px;">${escapeHtml(g.title)}</h4>
-      <div style="display:flex; justify-content:space-between; font-size:11.5px; color:var(--muted);">
-        <span>${done} / 365 ${t("stepsWord")}</span>
-        <strong style="color:var(--accent);">${pctStr}</strong>
-      </div>
-      <div class="progress-track"><div class="progress-fill" style="width:${pctNum}%"></div></div>
-      <div style="background:var(--surface-2); padding:10px; border-radius:10px; font-size:12px; margin-top:8px;">
-        <span class="eyebrow" style="display:block; margin-bottom:2px;">${t("dailyTaskLabel")}</span>
-        <strong>${escapeHtml(g.dailyTask)}</strong>
-      </div>
-    `;
-    top3CardsEl.appendChild(card);
-  });
+      const editTop3Html = isEditing ? `
+        <form class="edit-panel form-stack edit-top3-form" data-t3id="${g.id}">
+          <input type="text" class="input-field edit-t3-title" value="${escapeHtml(g.title)}" required />
+          <div class="form-row">
+            <input type="number" class="input-field edit-t3-done" min="0" max="365" value="${done}" required />
+            <button type="submit" class="btn btn-primary btn-xs">${t("saveBtn")}</button>
+            <button type="button" class="btn btn-outline btn-xs cancel-t3-edit">${t("cancelBtn")}</button>
+          </div>
+        </form>
+      ` : "";
+
+      const card = document.createElement("article");
+      card.className = "card card-primary-goal";
+      card.innerHTML = `
+        <div class="card-header">
+          <span class="badge badge-accent">#${idx + 1} · ${pctStr}</span>
+          <div class="row-actions">
+            <button type="button" class="btn btn-outline btn-xs" data-top3-edit="${g.id}">${t("editBtn")}</button>
+            <button type="button" class="del-btn" data-top3-del="${g.id}">✕</button>
+          </div>
+        </div>
+
+        ${editTop3Html}
+
+        <h4 class="card-title" style="margin-bottom:8px;">${escapeHtml(g.title)}</h4>
+        <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--muted);">
+          <span>${done} / 365 ${t("stepsWord")}</span>
+          <strong style="color:var(--accent);">${pctStr}</strong>
+        </div>
+        <div class="progress-track"><div class="progress-fill" style="width:${pctNum}%"></div></div>
+
+        <div class="form-row" style="margin-top:12px;">
+          <button type="button" class="btn btn-outline btn-sm" style="flex:1;" data-top3-minus="${g.id}">-1</button>
+          <button type="button" class="btn btn-primary btn-sm" style="flex:1;" data-top3-plus="${g.id}">+1</button>
+        </div>
+      `;
+      top3CardsEl.appendChild(card);
+    });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -743,11 +751,10 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const userName = document.getElementById("onboard-name").value.trim();
     const topGoal = document.getElementById("onboard-top-goal").value.trim();
-    const dailyStep = document.getElementById("onboard-daily-step").value.trim();
 
     state.userName = userName;
     state.onboarded = true;
-    state.top3Goals = [{ id: Date.now(), title: topGoal, dailyTask: dailyStep, stepsDone: 0, totalSteps: 365 }];
+    state.top3Goals = [{ id: Date.now(), title: topGoal, stepsDone: 0, totalSteps: 365 }];
     state.timelineGoals = [{
       id: Date.now() + 1,
       title: topGoal,
@@ -778,89 +785,80 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ==================== TAB 1 EVENTS ====================
-  // Top 3 Daily Instances: Check / Duplicate / Delete extra duplicate
-  document.getElementById("todo-top3-list").addEventListener("click", e => {
-    const tk = todayKey();
-    const list = state.top3DailyInstances[tk] || [];
-
-    const checkBtn = e.target.closest("[data-inst-toggle]");
-    if (checkBtn) {
-      const instId = Number(checkBtn.dataset.instToggle);
-      const inst = list.find(x => x.instanceId === instId);
-      if (inst) {
-        const goal = state.top3Goals.find(g => g.id === inst.goalId);
-        inst.done = !inst.done;
-        if (goal) {
-          goal.stepsDone = Math.max(0, Math.min(365, (goal.stepsDone || 0) + (inst.done ? 1 : -1)));
-        }
-        saveState();
-      }
-      return;
-    }
-
-    const dupBtn = e.target.closest("[data-inst-dup]");
-    if (dupBtn) {
-      const instId = Number(dupBtn.dataset.instDup);
-      const idx = list.findIndex(x => x.instanceId === instId);
-      if (idx !== -1) {
-        const orig = list[idx];
-        const copy = {
-          instanceId: Date.now() + Math.floor(Math.random() * 10000),
-          goalId: orig.goalId,
-          done: false
-        };
-        list.splice(idx + 1, 0, copy);
-        state.top3DailyInstances[tk] = list;
-        saveState();
-      }
-      return;
-    }
-
-    const delBtn = e.target.closest("[data-inst-del]");
-    if (delBtn) {
-      const instId = Number(delBtn.dataset.instDel);
-      const inst = list.find(x => x.instanceId === instId);
-      if (inst) {
-        if (inst.done) {
-          const goal = state.top3Goals.find(g => g.id === inst.goalId);
-          if (goal) goal.stepsDone = Math.max(0, (goal.stepsDone || 0) - 1);
-        }
-        state.top3DailyInstances[tk] = list.filter(x => x.instanceId !== instId);
-        saveState();
-      }
-    }
+  // Quick copy goal from dropdown in Tab 1
+  document.getElementById("quick-copy-goal-form").addEventListener("submit", e => {
+    e.preventDefault();
+    const gid = Number(document.getElementById("quick-copy-goal-select").value);
+    if (gid) copyGoalToTodoList(gid);
   });
 
-  // Tab 1: Active Goals Check (+1 step) & Duplicate (+1 extra step today)
+  // Copied Goals in To-Do List: Check (strikethrough + syncs Goals tab), +1, -1, Duplicate, Delete
   document.getElementById("todo-goals-list").addEventListener("click", e => {
-    const stepBtn = e.target.closest("[data-todogoal-step]");
-    if (stepBtn) {
-      const gid = Number(stepBtn.dataset.todogoalStep);
-      const goal = state.timelineGoals.find(g => g.id === gid);
-      if (goal) {
-        const nextNamed = (goal.steps || []).find(s => !s.done);
-        if (nextNamed) {
-          nextNamed.done = true;
+    const toggleBtn = e.target.closest("[data-tdgoal-toggle]");
+    if (toggleBtn) {
+      const id = Number(toggleBtn.dataset.tdgoalToggle);
+      const item = state.todoGoals.find(x => x.id === id);
+      if (item) {
+        item.done = !item.done;
+        const delta = item.done ? 1 : -1;
+        if (item.stepId) {
+          const goal = state.timelineGoals.find(g => g.id === item.goalId);
+          const step = goal?.steps?.find(s => s.id === item.stepId);
+          if (step) step.done = item.done;
+          else adjustTimelineGoalSteps(item.goalId, delta);
         } else {
-          goal.stepsDone = Math.min(goal.totalSteps, (goal.stepsDone || 0) + 1);
+          adjustTimelineGoalSteps(item.goalId, delta);
         }
         saveState();
       }
       return;
     }
 
-    const dupBtn = e.target.closest("[data-todogoal-dup]");
-    if (dupBtn) {
-      const gid = Number(dupBtn.dataset.todogoalDup);
-      const goal = state.timelineGoals.find(g => g.id === gid);
-      if (goal) {
-        goal.stepsDone = Math.min(goal.totalSteps, (goal.stepsDone || 0) + 1);
+    const plusBtn = e.target.closest("[data-tdgoal-plus]");
+    if (plusBtn) {
+      const item = state.todoGoals.find(x => x.id === Number(plusBtn.dataset.tdgoalPlus));
+      if (item) {
+        adjustTimelineGoalSteps(item.goalId, 1);
         saveState();
       }
+      return;
+    }
+
+    const minusBtn = e.target.closest("[data-tdgoal-minus]");
+    if (minusBtn) {
+      const item = state.todoGoals.find(x => x.id === Number(minusBtn.dataset.tdgoalMinus));
+      if (item) {
+        adjustTimelineGoalSteps(item.goalId, -1);
+        saveState();
+      }
+      return;
+    }
+
+    const dupBtn = e.target.closest("[data-tdgoal-dup]");
+    if (dupBtn) {
+      const idx = state.todoGoals.findIndex(x => x.id === Number(dupBtn.dataset.tdgoalDup));
+      if (idx !== -1) {
+        const orig = state.todoGoals[idx];
+        state.todoGoals.splice(idx + 1, 0, {
+          id: Date.now() + Math.floor(Math.random() * 10000),
+          goalId: orig.goalId,
+          stepId: orig.stepId,
+          title: orig.title,
+          done: false
+        });
+        saveState();
+      }
+      return;
+    }
+
+    const delBtn = e.target.closest("[data-tdgoal-del]");
+    if (delBtn) {
+      state.todoGoals = state.todoGoals.filter(x => x.id !== Number(delBtn.dataset.tdgoalDel));
+      saveState();
     }
   });
 
-  // Tab 1: Secondary Tasks (Add, Toggle, Duplicate, Delete)
+  // Secondary Priority Tasks: Add, Toggle (strikethrough), Duplicate, Delete
   document.getElementById("add-secondary-form").addEventListener("submit", e => {
     e.preventDefault();
     const input = document.getElementById("secondary-task-input");
@@ -965,7 +963,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ==================== TAB 4 EVENTS (GOALS & TIMELINE) ====================
-  // Auto-suggest step count when changing timeline horizon
   document.getElementById("tl-goal-horizon").addEventListener("change", e => {
     document.getElementById("tl-goal-steps").value = defaultStepsForHorizon(e.target.value);
   });
@@ -998,7 +995,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.getElementById("timeline-goals-container").addEventListener("submit", e => {
-    // Save Edited Goal
     const editForm = e.target.closest(".edit-goal-form");
     if (editForm) {
       e.preventDefault();
@@ -1009,13 +1005,16 @@ document.addEventListener("DOMContentLoaded", () => {
         goal.horizon = editForm.querySelector(".edit-g-horizon").value;
         goal.totalSteps = Math.max(1, Number(editForm.querySelector(".edit-g-total").value) || goal.totalSteps);
         goal.stepsDone = Math.max(0, Math.min(goal.totalSteps, Number(editForm.querySelector(".edit-g-done").value) || 0));
+        // Update titles of any copied items on To-Do list
+        state.todoGoals.forEach(item => {
+          if (item.goalId === gid && !item.stepId) item.title = goal.title;
+        });
         editingGoalId = null;
         saveState();
       }
       return;
     }
 
-    // Add Named Milestone Step
     const stepForm = e.target.closest(".add-step-form");
     if (stepForm) {
       e.preventDefault();
@@ -1030,29 +1029,26 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.getElementById("timeline-goals-container").addEventListener("click", e => {
-    // +1 Step on Goal
-    const step1Btn = e.target.closest("[data-tlgoal-step1]");
-    if (step1Btn) {
-      const goal = state.timelineGoals.find(g => g.id === Number(step1Btn.dataset.tlgoalStep1));
-      if (goal) {
-        goal.stepsDone = Math.min(goal.totalSteps, (goal.stepsDone || 0) + 1);
-        saveState();
-      }
+    const plusBtn = e.target.closest("[data-tlgoal-plus]");
+    if (plusBtn) {
+      adjustTimelineGoalSteps(Number(plusBtn.dataset.tlgoalPlus), 1);
+      saveState();
       return;
     }
 
-    // Duplicate Step on Goal (+1 extra step done)
-    const dupGoalBtn = e.target.closest("[data-tlgoal-dup]");
-    if (dupGoalBtn) {
-      const goal = state.timelineGoals.find(g => g.id === Number(dupGoalBtn.dataset.tlgoalDup));
-      if (goal) {
-        goal.stepsDone = Math.min(goal.totalSteps, (goal.stepsDone || 0) + 1);
-        saveState();
-      }
+    const minusBtn = e.target.closest("[data-tlgoal-minus]");
+    if (minusBtn) {
+      adjustTimelineGoalSteps(Number(minusBtn.dataset.tlgoalMinus), -1);
+      saveState();
       return;
     }
 
-    // Toggle Edit Panel
+    const copyBtn = e.target.closest("[data-tlgoal-copytodo]");
+    if (copyBtn) {
+      copyGoalToTodoList(Number(copyBtn.dataset.tlgoalCopytodo));
+      return;
+    }
+
     const editBtn = e.target.closest("[data-tlgoal-edit]");
     if (editBtn) {
       const gid = Number(editBtn.dataset.tlgoalEdit);
@@ -1067,21 +1063,34 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Delete Goal
     const gDel = e.target.closest("[data-tlgoal-del]");
     if (gDel) {
-      state.timelineGoals = state.timelineGoals.filter(g => g.id !== Number(gDel.dataset.tlgoalDel));
+      const gid = Number(gDel.dataset.tlgoalDel);
+      state.timelineGoals = state.timelineGoals.filter(g => g.id !== gid);
+      state.todoGoals = state.todoGoals.filter(item => item.goalId !== gid);
       saveState();
       return;
     }
 
-    // Named Step Check / Duplicate / Delete
     const stToggle = e.target.closest("[data-step-toggle]");
     if (stToggle) {
       const [gid, sid] = stToggle.dataset.stepToggle.split(":").map(Number);
       const goal = state.timelineGoals.find(g => g.id === gid);
       const step = goal?.steps?.find(s => s.id === sid);
-      if (step) { step.done = !step.done; saveState(); }
+      if (step) {
+        step.done = !step.done;
+        state.todoGoals.forEach(item => {
+          if (item.goalId === gid && item.stepId === sid) item.done = step.done;
+        });
+        saveState();
+      }
+      return;
+    }
+
+    const stCopy = e.target.closest("[data-step-copytodo]");
+    if (stCopy) {
+      const [gid, sid] = stCopy.dataset.stepCopytodo.split(":").map(Number);
+      copyGoalToTodoList(gid, sid);
       return;
     }
 
@@ -1114,22 +1123,68 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     if (state.top3Goals.length >= 3) return;
     const goalIn = document.getElementById("top3-goal-input");
-    const dailyIn = document.getElementById("top3-daily-input");
-    if (!goalIn.value.trim() || !dailyIn.value.trim()) return;
+    if (!goalIn.value.trim()) return;
 
     state.top3Goals.push({
       id: Date.now(),
       title: goalIn.value.trim(),
-      dailyTask: dailyIn.value.trim(),
       stepsDone: 0,
       totalSteps: 365
     });
     goalIn.value = "";
-    dailyIn.value = "";
     saveState();
   });
 
+  document.getElementById("top3-cards-container").addEventListener("submit", e => {
+    const form = e.target.closest(".edit-top3-form");
+    if (form) {
+      e.preventDefault();
+      const t3id = Number(form.dataset.t3id);
+      const goal = state.top3Goals.find(g => g.id === t3id);
+      if (goal) {
+        goal.title = form.querySelector(".edit-t3-title").value.trim() || goal.title;
+        goal.stepsDone = Math.max(0, Math.min(365, Number(form.querySelector(".edit-t3-done").value) || 0));
+        editingTop3Id = null;
+        saveState();
+      }
+    }
+  });
+
   document.getElementById("top3-cards-container").addEventListener("click", e => {
+    const plusBtn = e.target.closest("[data-top3-plus]");
+    if (plusBtn) {
+      const goal = state.top3Goals.find(g => g.id === Number(plusBtn.dataset.top3Plus));
+      if (goal) {
+        goal.stepsDone = Math.min(365, Number(goal.stepsDone || 0) + 1);
+        saveState();
+      }
+      return;
+    }
+
+    const minusBtn = e.target.closest("[data-top3-minus]");
+    if (minusBtn) {
+      const goal = state.top3Goals.find(g => g.id === Number(minusBtn.dataset.top3Minus));
+      if (goal) {
+        goal.stepsDone = Math.max(0, Number(goal.stepsDone || 0) - 1);
+        saveState();
+      }
+      return;
+    }
+
+    const editBtn = e.target.closest("[data-top3-edit]");
+    if (editBtn) {
+      const t3id = Number(editBtn.dataset.top3Edit);
+      editingTop3Id = editingTop3Id === t3id ? null : t3id;
+      renderAll();
+      return;
+    }
+
+    if (e.target.closest(".cancel-t3-edit")) {
+      editingTop3Id = null;
+      renderAll();
+      return;
+    }
+
     const del = e.target.closest("[data-top3-del]");
     if (del) {
       state.top3Goals = state.top3Goals.filter(g => g.id !== Number(del.dataset.top3Del));
