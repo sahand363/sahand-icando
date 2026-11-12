@@ -28,7 +28,7 @@
       </div>
       <h2 style="font-size:20px; margin-bottom:6px;" data-i18n="welcomeTitle">Welcome to I CanDo</h2>
       <p style="font-size:12.5px; color:var(--muted); margin-bottom:16px;" data-i18n="welcomeSub">
-        Enter your name and your #1 End-of-Year Goal to build your daily schedule.
+        Enter your name and your #1 End-of-Year Goal (365 daily steps) to build your daily schedule.
       </p>
       <form id="onboarding-form" class="form-stack">
         <div>
@@ -36,7 +36,7 @@
           <input type="text" id="onboard-name" class="input-field" style="margin-top:6px;" data-i18n-placeholder="askNamePlaceholder" placeholder="Your name..." required />
         </div>
         <div style="margin-top:6px;">
-          <label class="eyebrow" data-i18n="askTopGoalLabel">#1 END-OF-YEAR GOAL</label>
+          <label class="eyebrow" data-i18n="askTopGoalLabel">#1 END-OF-YEAR GOAL (365 STEPS)</label>
           <input type="text" id="onboard-top-goal" class="input-field" style="margin-top:6px;" data-i18n-placeholder="askTopGoalPlaceholder" placeholder="Your most important yearly goal..." required />
         </div>
         <div style="margin-top:6px;">
@@ -50,7 +50,7 @@
 
   <!-- Main Shell -->
   <div class="app-shell">
-    <!-- Desktop Sidebar (5 Tabs) -->
+    <!-- Desktop Sidebar -->
     <aside class="sidebar">
       <a class="brand" href="#">
         <span class="brand-mark">S</span>
@@ -93,40 +93,40 @@
 
       <!-- ==================== TAB 1: TO-DO LIST ==================== -->
       <section class="page active" id="page-todo">
-        <!-- 1. Mandatory Daily Tasks from Top 3 End-of-Year Goals -->
+        <!-- 1. Top 3 End-of-Year Goals Daily Actions (365 Steps) -->
         <article class="card card-primary-goal">
           <div class="card-header">
             <div>
-              <span class="badge badge-accent" data-i18n="mandatoryBadge">MANDATORY DAILY SCHEDULE</span>
-              <h3 class="card-title" style="margin-top:6px;" data-i18n="top3DailyTitle">Top 3 End-of-Year Goals — Daily Actions</h3>
+              <span class="badge badge-accent" data-i18n="mandatoryBadge">TOP 3 END-OF-YEAR GOALS (365 STEPS)</span>
+              <h3 class="card-title" style="margin-top:6px;" data-i18n="top3DailyTitle">Mandatory Daily Actions</h3>
             </div>
             <span class="eyebrow" id="top3-daily-counter">0 / 0</span>
           </div>
           <p style="font-size:12px; color:var(--muted); margin-bottom:8px;" data-i18n="top3DailySub">
-            Tasks linked to your Top 3 Goals appear in your daily schedule every single day.
+            Check to complete 1 of 365 steps. Use Duplicate if you work on a goal twice today to count 2 steps.
           </p>
           <div class="item-list" id="todo-top3-list"></div>
         </article>
 
         <div class="grid-2">
-          <!-- 2. Main Priorities from Goals List (Tab 4) -->
+          <!-- 2. Active Goals from Tab 4 (Main Priority) -->
           <article class="card card-primary-goal">
             <div class="card-header">
               <div>
                 <span class="badge badge-accent" data-i18n="mainPriorityBadge">MAIN PRIORITY</span>
-                <h3 class="card-title" style="margin-top:6px;" data-i18n="goalsInTodoTitle">Active Goals & Next Steps</h3>
+                <h3 class="card-title" style="margin-top:6px;" data-i18n="goalsInTodoTitle">Goals List</h3>
               </div>
               <button class="btn btn-outline btn-sm" data-goto="goals" data-i18n="manageGoalsBtn">Goals →</button>
             </div>
             <div class="item-list" id="todo-goals-list"></div>
           </article>
 
-          <!-- 3. Secondary Priority Tasks (Everything other than main goals) -->
+          <!-- 3. Secondary Priority Tasks -->
           <article class="card card-secondary-box">
             <div class="card-header">
               <div>
                 <span class="badge badge-secondary" data-i18n="secondaryBadge">SECONDARY PRIORITY</span>
-                <h3 class="card-title" style="margin-top:6px;" data-i18n="secondaryTasksTitle">Other Daily Tasks</h3>
+                <h3 class="card-title" style="margin-top:6px;" data-i18n="secondaryTasksTitle">Other Tasks</h3>
               </div>
             </div>
             <form id="add-secondary-form" class="form-row">
@@ -141,7 +141,6 @@
       <!-- ==================== TAB 2: SLEEP SETTINGS & SCHEDULE ==================== -->
       <section class="page" id="page-sleep">
         <div class="grid-2">
-          <!-- Sleep Settings & Targets -->
           <article class="card">
             <div class="card-header">
               <h3 class="card-title" data-i18n="sleepSettingsTitle">Sleep Settings & Targets</h3>
@@ -167,7 +166,6 @@
 
             <hr style="border:0; border-top:1px solid var(--line); margin:16px 0;" />
 
-            <!-- Log Last Night's Sleep -->
             <h4 class="card-title" style="font-size:14.5px; margin-bottom:8px;" data-i18n="logSleepTitle">Record Sleep</h4>
             <form id="log-sleep-form" class="form-stack">
               <div class="form-row">
@@ -184,7 +182,6 @@
             </form>
           </article>
 
-          <!-- Weekly Sleep Schedule -->
           <article class="card">
             <div class="card-header">
               <h3 class="card-title" data-i18n="weeklySleepSchedTitle">Weekly Sleep Schedule</h3>
@@ -201,7 +198,6 @@
 
       <!-- ==================== TAB 3: WEEKLY WORKOUT PLAN ==================== -->
       <section class="page" id="page-workout">
-        <!-- Recommended Activity Benchmarks & Percentage Progress -->
         <article class="card">
           <div class="card-header">
             <div>
@@ -235,7 +231,6 @@
           </div>
         </article>
 
-        <!-- 7-Day Weekly Workout Schedule -->
         <article class="card">
           <div class="card-header">
             <h3 class="card-title" data-i18n="weeklyWorkoutSchedTitle">Weekly Workout Schedule</h3>
@@ -252,18 +247,18 @@
           <form id="add-timeline-goal-form" class="form-stack">
             <div class="form-row">
               <input type="text" id="tl-goal-title" class="input-field" data-i18n-placeholder="tlGoalPlaceholder" placeholder="Goal title..." required />
-              <select id="tl-goal-horizon" class="input-field" style="max-width:175px;">
-                <option value="Yearly" data-i18n="hYearly">Yearly Goal</option>
-                <option value="6-Month" data-i18n="hSixMonth">6-Month Goal</option>
-                <option value="3-Month" data-i18n="hThreeMonth">3-Month Goal</option>
-                <option value="Monthly" data-i18n="hMonthly">Monthly Goal</option>
+              <select id="tl-goal-horizon" class="input-field" style="max-width:165px;">
+                <option value="Yearly" data-i18n="hYearly">Yearly</option>
+                <option value="6-Month" data-i18n="hSixMonth">6-Month</option>
+                <option value="3-Month" data-i18n="hThreeMonth">3-Month</option>
+                <option value="Monthly" data-i18n="hMonthly">Monthly</option>
               </select>
+              <input type="number" id="tl-goal-steps" class="input-field" style="max-width:140px;" min="1" max="3650" value="365" data-i18n-placeholder="stepsCountPlaceholder" placeholder="Steps required" required />
               <button type="submit" class="btn btn-primary" data-i18n="addGoalBtn">Add Goal</button>
             </div>
           </form>
         </article>
 
-        <!-- Timeline Filter Pills -->
         <div class="pill-row" id="goal-filter-pills">
           <button class="pill-btn active" data-filter="All" data-i18n="filterAll">All Timelines</button>
           <button class="pill-btn" data-filter="Yearly" data-i18n="hYearly">Yearly</button>
@@ -280,13 +275,13 @@
         <article class="card">
           <div class="card-header">
             <div>
-              <span class="badge badge-accent" data-i18n="strictLimitBadge">MAXIMUM 3 GOALS</span>
+              <span class="badge badge-accent" data-i18n="strictLimitBadge">MAXIMUM 3 GOALS · 365 STEPS EACH</span>
               <h3 class="card-title" style="margin-top:6px;" data-i18n="top3HeaderTitle">My Top 3 End-of-Year Goals</h3>
             </div>
             <strong style="font-size:15px; color:var(--accent);" id="top3-slots-count">0 / 3</strong>
           </div>
           <p style="font-size:12.5px; color:var(--muted); margin-bottom:12px;" data-i18n="top3Explain">
-            You can never have more than three End-of-Year Goals. Each goal defines a mandatory daily task that appears in your To-Do List every single day.
+            You can never have more than three End-of-Year Goals. Each goal has 365 daily steps and shows your percentage progress as you check or duplicate its daily task in the To-Do List.
           </p>
 
           <form id="add-top3-form" class="form-stack">
